@@ -14,4 +14,9 @@ find you 😉. This project was originally created for my Advanced Java Concepts
 myself a little bit. 
 
 ## Issues/Pull Requests
-Unless it's an *actual* bug, please do **NOT* submit a bug report.
+Unless it's an *actual* bug, please do **NOT** submit a bug report.
+
+## Credits
+Dalton Smith - Programmer and Project Coordinator  
+Jacob Egnor  - Artwork and Design  
+Cory James   - Artwork and Design  
