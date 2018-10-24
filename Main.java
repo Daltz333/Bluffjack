@@ -5,7 +5,9 @@ import bluffjack.styles.java.RootStyles;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import bluffjack.constants.GeneralConstants;
 
@@ -29,6 +31,13 @@ public class Main extends Application {
         //set fixed aspect ratio
         primaryStage.setMinHeight(GeneralConstants.minWindowHeight);
         primaryStage.setMinWidth(GeneralConstants.minWindowWidth);
+
+        ColumnConstraints column1 = new ColumnConstraints();
+        RowConstraints row1 = new RowConstraints();
+        column1.setPercentWidth(100);
+        row1.setPercentHeight(100);
+        root.getColumnConstraints().add(column1);
+        root.getRowConstraints().add(row1);
 
     }
 

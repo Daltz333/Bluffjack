@@ -1,7 +1,9 @@
 package bluffjack.styles.java;
 
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class RootStyles extends Style{
 
@@ -12,7 +14,10 @@ public class RootStyles extends Style{
         root.setId("rootPane");
         root.setAlignment(Pos.CENTER);
         root.getStylesheets().add(stylesheet);
-        root.setGridLinesVisible(true);
+        root.setGridLinesVisible(false);
+
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("../../images/application_icon.png")));
 
     }
 

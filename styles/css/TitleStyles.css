@@ -15,6 +15,7 @@
     -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
     -fx-alignment: center;
     -fx-underline: false;
+    -fx-padding: 0px 0px 0px 0px;
 
 }
 
@@ -22,6 +23,18 @@
     -fx-text-fill: #ffc5e9;
 }
 
-#smallTextItem {
-    -fx-text-fill: white;
+#smallMenuItem {
+    -fx-text-fill: #13fff0;
+    -fx-underline: false;
+}
+
+#dialogPaneMain {
+    -fx-background-color: #459ca8;
+    -fx-font-size: 20;
+    -fx-font-family: BlackChancery, sans-serif;
+}
+
+#creditContent {
+    -fx-text-fill: black;
+    -fx-font-family: Chlorinar, sans-serif;
 }
