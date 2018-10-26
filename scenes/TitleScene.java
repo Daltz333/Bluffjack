@@ -1,22 +1,20 @@
-package bluffjack.scenes;
+package scenes;
 
 import bluffjack.constants.GeneralConstants;
-import bluffjack.styles.java.TitleStyles;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Pair;
+import styles.java.TitleStyles;
 
 import java.util.Optional;
 
@@ -66,39 +64,39 @@ public class TitleScene {
 
         setLinkHandlers();
 
-        }
+    }
 
-        public void setLinkHandlers() {
-            exitGame.setOnAction(event -> {
-                Platform.exit();
-            });
+    public void setLinkHandlers() {
+        exitGame.setOnAction(event -> {
+            Platform.exit();
+        });
 
-            credits.setOnAction(event -> {
-                Dialog<Pair<String, String>> dialog = new Dialog<>();
-                dialog.setTitle("Additional Credits");
-                dialog.setHeaderText("Extra thanks to the following people:");
-                titleStyles.setDialogPaneStyle(dialog.getDialogPane());
+        credits.setOnAction(event -> {
+            Dialog<Pair<String, String>> dialog = new Dialog<>();
+            dialog.setTitle("Additional Credits");
+            dialog.setHeaderText("Extra thanks to the following people:");
+            titleStyles.setDialogPaneStyle(dialog.getDialogPane());
 
-                Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
-                stage.getIcons().add(new Image(this.getClass().getResource("../images/heart.png").toString()));
+            Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(this.getClass().getResource("/images/heart.png").toString()));
 
-                GridPane grid = new GridPane();
-                grid.setHgap(10);
-                grid.setVgap(10);
-                grid.setPadding(new Insets(20, 150, 10, 10));
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
 
-                content.setId("creditContent");
-                grid.add(content, 0, 0);
+            content.setId("creditContent");
+            grid.add(content, 0, 0);
 
-                dialog.getDialogPane().setContent(grid);
+            dialog.getDialogPane().setContent(grid);
 
-                dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CLOSE);
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CLOSE);
 
-                Optional<Pair<String, String>> result = dialog.showAndWait();
+            Optional<Pair<String, String>> result = dialog.showAndWait();
 
 
-                dialog.close();
-            });
+            dialog.close();
+        });
 
-        }
+    }
 }

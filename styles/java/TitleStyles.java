@@ -1,19 +1,15 @@
-package bluffjack.styles.java;
+package styles.java;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 
-public class TitleStyles extends Style{
+public class TitleStyles extends bluffjack.styles.java.Style {
 
-    private String stylesheet = this.getClass().getResource("../css/TitleStyles.css").toExternalForm();
+    private String stylesheet = this.getClass().getResource("/styles/css/TitleStyles.css").toExternalForm();
 
     public void setTitleStyles(BorderPane title) {
-            setFonts();
-            title.getStylesheets().add(stylesheet);
+        setFonts();
+        title.getStylesheets().add(stylesheet);
 
     }
 

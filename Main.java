@@ -1,15 +1,12 @@
-package bluffjack;
-
+import bluffjack.constants.GeneralConstants;
 import bluffjack.scenes.SceneController;
-import bluffjack.styles.java.RootStyles;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
-import bluffjack.constants.GeneralConstants;
+import styles.java.RootStyles;
 
 public class Main extends Application {
 
