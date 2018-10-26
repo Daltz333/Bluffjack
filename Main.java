@@ -1,17 +1,17 @@
 import bluffjack.constants.GeneralConstants;
-import bluffjack.scenes.SceneController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
+import scenes.SceneController;
 import styles.java.RootStyles;
 
 public class Main extends Application {
 
-    RootStyles rootStyles = new RootStyles();
-    SceneController sceneController = new SceneController();
+    private RootStyles rootStyles = new RootStyles();
+    private SceneController sceneController = new SceneController();
 
     @Override
     public void start(Stage primaryStage) {

@@ -1,4 +1,4 @@
-package bluffjack.scenes;
+package scenes;
 
 import javafx.scene.layout.GridPane;
 
