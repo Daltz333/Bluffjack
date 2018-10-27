@@ -1,4 +1,4 @@
-package bluffjack.constants;
+package constants;
 
 public class GeneralConstants {
 
@@ -11,6 +11,12 @@ public class GeneralConstants {
     public static final String creditsOptionName = "Developer: Dalton Smith";
     public static final String versionNumber = "1.0.0a";
 
+    //connect scene constants
+    public static final String connectDialogName = "Connect";
+    public static final String hostDialogName = "Create Game";
+    public static final String mainMenuButton = "Main Menu";
+    public static final String returnButtonName  = "Return";
+
     public static final String creditsText = "Developer and Project Coordinator: Dalton Smith\n" +
             "Graphic Designer: Jacob Egnor\n" +
             "Graphic Designer: Kyle James\n" +
@@ -22,4 +28,5 @@ public class GeneralConstants {
     //window data
     public static final int minWindowWidth = 960;
     public static final int minWindowHeight = 540;
+
 }

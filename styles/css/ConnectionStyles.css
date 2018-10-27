@@ -1,0 +1,45 @@
+#connectionButton {
+    -fx-background-color: transparent;
+    -fx-font-size:30;
+    -fx-padding: 0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+    -fx-underline: false;
+    -fx-border-color: transparent;
+}
+
+#connectionButton:hover {
+    -fx-text-fill: #ffc5e9;
+}
+
+#dialogMain {
+    -fx-padding: 0 0 48 0;
+}
+
+#titleLabel {
+    -fx-font-size: 80;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+}
+
+#ipBox {
+    -fx-font-size: 15;
+    -fx-alignment: center;
+}
+
+#ipButton {
+    -fx-font-size: 25;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+    -fx-border-color: transparent;
+    -fx-underline: false;
+    -fx-padding: 10;
+}
+
+#ipButton:hover {
+    -fx-text-fill: #ffc5e9;
+}
+
+#dialogSecond {
+    -fx-padding: 0 0 98 0;
+}

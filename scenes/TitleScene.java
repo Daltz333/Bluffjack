@@ -1,6 +1,6 @@
 package scenes;
 
-import bluffjack.constants.GeneralConstants;
+import constants.GeneralConstants;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -33,42 +33,58 @@ public class TitleScene {
     Label content = new Label(GeneralConstants.creditsText);
 
     public void setSceneState(GridPane root) {
-        titleStyles.setTitleStyles(subRoot);
-        titleLabel.setId("titleLabel");
-        startGame.setId("menuItem");
-        optionsGame.setId("menuItem");
-        exitGame.setId("menuItem");
-        credits.setId("smallMenuItem");
-        versionNumber.setId("smallMenuItem");
-        content.setId("creditContent");
 
-        GridPane.setHalignment(versionNumber, HPos.RIGHT);
-        GridPane.setHalignment(credits, HPos.RIGHT);
-        GridPane.setHalignment(startGame, HPos.CENTER);
-        GridPane.setHalignment(optionsGame, HPos.CENTER);
-        GridPane.setHalignment(exitGame, HPos.CENTER);
+        if (mainContentPane.getChildren().isEmpty()) {
+            System.out.println("Title Pane is empty");
 
-        bottomBarPane.setAlignment(Pos.BOTTOM_RIGHT);
+            titleStyles.setTitleStyles(subRoot);
+            titleLabel.setId("titleLabel");
+            startGame.setId("menuItem");
+            optionsGame.setId("menuItem");
+            exitGame.setId("menuItem");
+            credits.setId("smallMenuItem");
+            versionNumber.setId("smallMenuItem");
+            content.setId("creditContent");
 
-        mainContentPane.setAlignment(Pos.CENTER);
-        mainContentPane.add(titleLabel, 0, 0);
-        mainContentPane.add(startGame, 0, 1);
-        mainContentPane.add(optionsGame, 0, 2);
-        mainContentPane.add(exitGame, 0, 3);
-        bottomBarPane.add(versionNumber, 0, 0);
-        bottomBarPane.add(credits, 0, 1);
+            GridPane.setHalignment(versionNumber, HPos.RIGHT);
+            GridPane.setHalignment(credits, HPos.RIGHT);
+            GridPane.setHalignment(startGame, HPos.CENTER);
+            GridPane.setHalignment(optionsGame, HPos.CENTER);
+            GridPane.setHalignment(exitGame, HPos.CENTER);
 
-        subRoot.setCenter(mainContentPane);
-        subRoot.setBottom(bottomBarPane);
-        root.add(subRoot, 0, 0);
+            bottomBarPane.setAlignment(Pos.BOTTOM_RIGHT);
 
-        setLinkHandlers();
+            mainContentPane.setAlignment(Pos.CENTER);
+            mainContentPane.add(titleLabel, 0, 0);
+            mainContentPane.add(startGame, 0, 1);
+            mainContentPane.add(optionsGame, 0, 2);
+            mainContentPane.add(exitGame, 0, 3);
+            bottomBarPane.add(versionNumber, 0, 0);
+            bottomBarPane.add(credits, 0, 1);
+
+            subRoot.setCenter(mainContentPane);
+            subRoot.setBottom(bottomBarPane);
+            root.add(subRoot, 0, 0);
+
+            setLinkHandlers();
+
+        } else {
+            System.out.println("Title pane is not empty");
+            root.add(subRoot, 0, 0);
+        }
 
     }
 
     public void setLinkHandlers() {
         exitGame.setOnAction(event -> {
             Platform.exit();
+        });
+
+        startGame.setOnAction(event -> {
+            System.out.println("Show IP Dialog");
+            SceneController sceneController = new SceneController();
+            sceneController.setScene(1);
+
         });
 
         credits.setOnAction(event -> {

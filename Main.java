@@ -1,4 +1,4 @@
-import bluffjack.constants.GeneralConstants;
+import constants.GeneralConstants;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
@@ -22,8 +22,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 960, 540));
         primaryStage.show();
 
+        SceneController.root = root;
+
         rootStyles.setRootStyles(root);
-        sceneController.manageScenes(root);
+        SceneController.manageScenes();
 
         //set fixed aspect ratio
         primaryStage.setMinHeight(GeneralConstants.minWindowHeight);

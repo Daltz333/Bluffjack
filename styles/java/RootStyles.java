@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class RootStyles extends bluffjack.styles.java.Style {
+public class RootStyles extends styles.java.Style {
 
     private String stylesheet = this.getClass().getResource("/styles/css/RootStyles.css").toExternalForm();
 
