@@ -17,7 +17,8 @@ public class GeneralConstants {
     public static final String mainMenuButton = "Main Menu";
     public static final String returnButtonName  = "Return";
 
-    public static final String creditsText = "Developer and Project Coordinator: Dalton Smith\n" +
+    public static final String creditsText =
+            "Developer and Project Coordinator: Dalton Smith\n" +
             "Graphic Designer: Jacob Egnor\n" +
             "Graphic Designer: Kyle James\n" +
             "Motivational Support: ur mum\n" +
@@ -28,5 +29,11 @@ public class GeneralConstants {
     //window data
     public static final int minWindowWidth = 960;
     public static final int minWindowHeight = 540;
+
+    //game board constants
+    public static final String hitMeName = "Hit me";
+    public static final String passName = "Pass";
+    public static final String specialsName = "Specials";
+    public static final int cardSize = 150;
 
 }

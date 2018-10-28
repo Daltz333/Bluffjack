@@ -41,7 +41,7 @@
 
 #subRoot {
     -fx-font-family: BlackChancery, sans-serif;
-    -fx-background-image: url("../../images/title_screen.jpg");
+    -fx-background-image: url("/images/title_screen.jpg");
     -fx-height: 100%;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
