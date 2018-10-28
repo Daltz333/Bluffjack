@@ -8,4 +8,5 @@
     -fx-border-color: transparent;
     -fx-color: transparent;
     -fx-background-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 3, 3, 3);
 }

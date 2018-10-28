@@ -39,4 +39,5 @@ public class GeneralConstants {
 
     public static final boolean debugEnabled = false;
 
+    public static final double deckHGap = 2;
 }

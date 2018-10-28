@@ -23,8 +23,7 @@ public class GameCard extends Region {
 
         imageButton.getStylesheets().add(stylesheet);
 
-        imageButton.setMaxSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
-        imageButton.setMinSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
+        imageButton.setPrefSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
         imageButton.setId("gameCard");
     }
 

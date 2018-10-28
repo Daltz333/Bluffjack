@@ -31,6 +31,9 @@ public class BoardScene {
     Hyperlink playerName = new Hyperlink("Opponent: Game Bot");
     Hyperlink exitGame = new Hyperlink(GeneralConstants.mainMenuButton);
 
+    GridPane playerRow = new GridPane();
+    GridPane opponentRow = new GridPane();
+
     public void setMainBoard(GridPane root) {
 
         if(mainBoard.getChildren().isEmpty()) {
@@ -41,7 +44,6 @@ public class BoardScene {
 
             playerSide.setAlignment(Pos.BOTTOM_CENTER);
             playerDeck.setAlignment(Pos.CENTER);
-
 
             mainBoard.setTop(opponentSide);
             mainBoard.setCenter(board);
@@ -56,9 +58,14 @@ public class BoardScene {
 
             setEventHandlers();
 
+            System.out.println(playerDeck.getWidth());
+
+            opponentDeck.setMinWidth(GeneralConstants.cardWidth);
+
             root.add(mainBoard, 0, 0);
 
         } else {
+            gameController.startGame(playerRow, opponentRow);
             root.add(mainBoard, 0, 0);
 
         }
@@ -73,11 +80,10 @@ public class BoardScene {
     }
 
     private void createCenter(BorderPane board) {
-        GridPane playerRow = new GridPane();
-        GridPane opponentRow = new GridPane();
 
         gameController.startGame(playerRow, opponentRow);
 
+        playerRow.setId("playerRow");
         board.setBottom(playerRow);
 
     }
@@ -113,7 +119,12 @@ public class BoardScene {
 
     private void setEventHandlers() {
         exitGame.setOnAction(event -> {
+            gameController.stopGame(playerRow);
             sceneController.setScene(0);
+        });
+
+        HitMeOption.setOnAction(event -> {
+            gameController.giveCard(playerRow);
         });
     }
 

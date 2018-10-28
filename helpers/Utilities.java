@@ -6,15 +6,20 @@ import java.util.Random;
 public class Utilities {
 
     //thanks stackoverflow!
-    public static int getRandomWithExclusion(Random rnd, int start, int end, ArrayList<Integer> exclude) {
-        int random = start + rnd.nextInt(end - start + 1 - exclude.size());
-        for (int ex : exclude) {
-            if (random < ex) {
-                break;
+    public static int getRandomWithExclusion(Random rand, int start, int end, ArrayList<Integer> excludeRows) {
+
+        if (!(excludeRows.size() == 11)) {
+            int range = end - start + 1;
+
+            int random = rand.nextInt(range) + 1;
+            while (excludeRows.contains(random)) {
+                random = rand.nextInt(range) + 1;
             }
-            random++;
+
+            return random;
+        } else {
+            return -1;
         }
-        return random;
     }
 
 }
