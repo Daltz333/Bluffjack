@@ -37,6 +37,7 @@ public class ConnectionScene {
         dialog.setId("dialogMain");
         sceneRoot.setAlignment(Pos.CENTER);
 
+        sceneRoot.setId("sceneRoot");
         connectionButton.setId("connectionButton");
         hostGameButton.setId("connectionButton");
         mainMenuButton.setId("connectionButton");
@@ -70,6 +71,10 @@ public class ConnectionScene {
             sceneController.setScene(1);
         });
 
+        hostGameButton.setOnAction(event -> {
+            sceneController.setScene(3);
+        });
+
     }
 
     public void showConnectScene(GridPane root) {
@@ -80,6 +85,7 @@ public class ConnectionScene {
         titleLabel.setId("titleLabel");
         ipBox.setId("ipBox");
         confirmationButton.setId("ipButton");
+        sceneRoot.setId("sceneRoot");
         returnButton.setId("ipButton");
         dialog.setId("dialogSecond");
 

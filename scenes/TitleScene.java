@@ -45,6 +45,7 @@ public class TitleScene {
             credits.setId("smallMenuItem");
             versionNumber.setId("smallMenuItem");
             content.setId("creditContent");
+            subRoot.setId("subRoot");
 
             GridPane.setHalignment(versionNumber, HPos.RIGHT);
             GridPane.setHalignment(credits, HPos.RIGHT);
