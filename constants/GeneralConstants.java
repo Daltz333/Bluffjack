@@ -34,6 +34,9 @@ public class GeneralConstants {
     public static final String hitMeName = "Hit me";
     public static final String passName = "Pass";
     public static final String specialsName = "Specials";
-    public static final int cardSize = 150;
+    public static final int cardWidth = 126;
+    public static final double cardHeight = 204;
+
+    public static final boolean debugEnabled = false;
 
 }

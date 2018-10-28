@@ -1,7 +1,7 @@
 package logic;
 
 import constants.GeneralConstants;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
@@ -9,46 +9,39 @@ import java.util.ArrayList;
 
 public class GameCard extends Region {
 
-    int value;
     ImageView coverImage;
+    Button imageButton;
+    String value;
+
+    private String stylesheet = this.getClass().getResource("/styles/css/CardStyles.css").toExternalForm();
 
     //card constructor
-    public GameCard(int cardNum, int cardType) {
-        setId("gameCard");
-
-        Image cover = new Image(getClass().getResourceAsStream("/images/game_card_back.jpg"));
-        this.coverImage = new ImageView();
-        this.coverImage.setImage(cover);
-        this.coverImage.setPreserveRatio(true);
-        this.coverImage.setFitWidth(GeneralConstants.cardSize);
+    public GameCard(String cardNum, int cardType) {
         this.value = cardNum;
+
+        imageButton = new Button(cardNum);
+
+        imageButton.getStylesheets().add(stylesheet);
+
+        imageButton.setMaxSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
+        imageButton.setMinSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
+        imageButton.setId("gameCard");
     }
 
-    public ImageView returnGameCardCover() {
-        return this.coverImage;
+    public Button returnGameCardCover() {
+        return this.imageButton;
 
     }
 
-    public ArrayList<GameCard> generateGameCardFront() {
+    public static ArrayList<GameCard> generateGameDeck() {
         ArrayList<GameCard> cardArray = new ArrayList<>();
 
         //create our array of game cards
         for (int i = 0; i < 12; i++){
-            cardArray.add(new GameCard(i, 0 ));
+            cardArray.add(new GameCard(String.valueOf(i), 0 ));
         }
 
         return cardArray;
     }
 
-
-    public ArrayList<GameCard> generateGameCardBack() {
-        ArrayList<GameCard> cardArray = new ArrayList<>();
-
-        //create our array of game cards
-        for (int i = 0; i < 12; i++){
-            cardArray.add(new GameCard(i, 1));
-        }
-
-        return cardArray;
-    }
 }
