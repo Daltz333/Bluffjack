@@ -10,6 +10,7 @@ public class SceneController {
     private static int selectedScene = 0;
     public static GridPane root;
 
+    //display the appropriate scene
     public static void manageScenes() {
         switch (selectedScene) {
             case 0:
@@ -46,7 +47,7 @@ public class SceneController {
 
     }
 
-    //x36-
+    //clear our root nodes and set scene
     public void setScene(int state) {
         selectedScene = state;
 

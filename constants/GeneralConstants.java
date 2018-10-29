@@ -28,10 +28,10 @@ public class GeneralConstants {
 
     //window data
     public static final int minWindowWidth = 960;
-    public static final int minWindowHeight = 540;
+    public static final int minWindowHeight = 650;
 
     //game board constants
-    public static final String hitMeName = "Hit me";
+    public static final String hitMeName = "Hit";
     public static final String passName = "Pass";
     public static final String specialsName = "Specials";
     public static final int cardWidth = 126;

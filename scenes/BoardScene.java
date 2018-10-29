@@ -11,6 +11,7 @@ import logic.GameMain;
 import styles.java.BoardStyles;
 
 public class BoardScene {
+    //framework of board screen
     BorderPane mainBoard = new BorderPane();
     BorderPane opponentSide = new BorderPane();
     BorderPane board = new BorderPane();
@@ -24,6 +25,7 @@ public class BoardScene {
 
     GameMain gameController = new GameMain();
 
+    //buttons
     Hyperlink HitMeOption = new Hyperlink(GeneralConstants.hitMeName);
     Hyperlink PassOption = new Hyperlink(GeneralConstants.passName);
     Hyperlink SpecialOption = new Hyperlink(GeneralConstants.specialsName);
@@ -31,40 +33,46 @@ public class BoardScene {
     Hyperlink playerName = new Hyperlink("Opponent: Game Bot");
     Hyperlink exitGame = new Hyperlink(GeneralConstants.mainMenuButton);
 
+    //sub panes of center board
     GridPane playerRow = new GridPane();
     GridPane opponentRow = new GridPane();
 
     public void setMainBoard(GridPane root) {
 
+        //check if board was previously created, prevent null pointer exception
         if(mainBoard.getChildren().isEmpty()) {
+            //set our styles
             boardStyles.setBoardtyles(mainBoard);
             mainBoard.setId("mainBoard");
             playerSide.setId("playerRoot");
             opponentSide.setId("playerRoot");
 
+            //set alignments
             playerSide.setAlignment(Pos.BOTTOM_CENTER);
             playerDeck.setAlignment(Pos.CENTER);
 
+            //set positions
             mainBoard.setTop(opponentSide);
             mainBoard.setCenter(board);
             mainBoard.setBottom(playerSide);
             mainBoard.setLeft(playerDeck);
             mainBoard.setRight(opponentDeck);
 
+            //create board
             createCenter(board);
-            createDeck(playerDeck, opponentDeck);
+            createDeck(playerDeck);
             createPlayerSide(playerSide);
             createOpponentSide(opponentSide);
 
             setEventHandlers();
 
-            System.out.println(playerDeck.getWidth());
-
+            //set right pane to be equal to left pane
             opponentDeck.setMinWidth(GeneralConstants.cardWidth);
 
             root.add(mainBoard, 0, 0);
 
         } else {
+            //redisplay board and restart game
             gameController.startGame(playerRow, opponentRow);
             root.add(mainBoard, 0, 0);
 
@@ -72,7 +80,8 @@ public class BoardScene {
 
     }
 
-    private void createDeck(GridPane playerSide, GridPane opponentSide) {
+    private void createDeck(GridPane playerSide) {
+        //creates the "visual" deck on the board, no functional purpose
         GameCard playerDeck = new GameCard("Deck", 0);
 
         playerSide.add(playerDeck.returnGameCardCover(), 0, 0);
@@ -80,7 +89,7 @@ public class BoardScene {
     }
 
     private void createCenter(BorderPane board) {
-
+        //create the center  of the boards
         gameController.startGame(playerRow, opponentRow);
 
         playerRow.setId("playerRow");
@@ -89,6 +98,7 @@ public class BoardScene {
     }
 
     private void createPlayerSide(GridPane playerSide) {
+        //user options
         HitMeOption.setId("playerOption");
         PassOption.setId("playerOption");
         SpecialOption.setId("playerOption");
@@ -100,6 +110,7 @@ public class BoardScene {
     }
 
     private void createOpponentSide(BorderPane opponentSide) {
+        //opponent side visuals
         playerName.setId("opponentPlayer");
         exitGame.setId("playerOption");
 
@@ -112,12 +123,8 @@ public class BoardScene {
     }
 
 
-    private void optionsButton(GridPane board) {
-
-
-    }
-
     private void setEventHandlers() {
+        //handle our buttons here
         exitGame.setOnAction(event -> {
             gameController.stopGame(playerRow);
             sceneController.setScene(0);

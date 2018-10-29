@@ -17,11 +17,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
 
+        //set stage information
         primaryStage.setTitle(GeneralConstants.projectName);
         primaryStage.setMaximized(true);
         primaryStage.setScene(new Scene(root, 960, 540));
         primaryStage.show();
 
+        //pass main root to scene controller
         SceneController.root = root;
 
         rootStyles.setRootStyles(root);
@@ -31,6 +33,7 @@ public class Main extends Application {
         primaryStage.setMinHeight(GeneralConstants.minWindowHeight);
         primaryStage.setMinWidth(GeneralConstants.minWindowWidth);
 
+        //have subroots fill root completely
         ColumnConstraints column1 = new ColumnConstraints();
         RowConstraints row1 = new RowConstraints();
         column1.setPercentWidth(100);

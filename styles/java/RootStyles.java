@@ -7,8 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class RootStyles extends styles.java.Style {
-
-
+    //this applies to the MAIN root
     public void setRootStyles(GridPane root) {
         setFonts();
         root.setAlignment(Pos.CENTER);

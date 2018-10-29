@@ -22,16 +22,16 @@ public class GameMain {
     private ArrayList<GameCard> playerHand = new ArrayList<>();
     private ArrayList<GameCard> opponentHand = new ArrayList<GameCard>();
 
-    GameCard cardHidden;
-
     public void startGame(GridPane playerRow, GridPane opponentRow) {
         if (!givenInitialCards) {
+            //grab random VALID int, create new card of that int
             int cardOne = rand.nextInt(11);
             exclusions.add(cardOne);
 
             int cardTwo = Utilities.getRandomWithExclusion(rand, 0, 11, exclusions);
             exclusions.add(cardTwo);
 
+            //set first card object to have overlay *temporary*
             GameCard cardObjectOne = new GameCard(Integer.toString(cardOne), 0);
             ColorAdjust colorAdjust = new ColorAdjust();
             colorAdjust.setBrightness(-0.2);
@@ -60,12 +60,14 @@ public class GameMain {
 
     }
 
+    //logic to displaying card in specified row
     public void giveCard(GridPane playerRow) {
         int cardInt = Utilities.getRandomWithExclusion(rand, 0, 11, exclusions);
 
         System.out.println(exclusions);
         System.out.println("Random card is: " + cardInt);
 
+        //do not proceed if no cards left in deck
         if (!(cardInt == -1)) {
             GameCard cardObjectTwo = new GameCard(Integer.toString(cardInt), 0);
             this.exclusions.add(cardInt);
@@ -73,9 +75,9 @@ public class GameMain {
             boolean exit = false;
             int i = 0;
 
+            //check next available index of row
             while (!exit) {
                 try {
-                    System.out.println(i);
                     playerRow.getChildren().get(i);
                     //do nothing
                 } catch(Exception e) {

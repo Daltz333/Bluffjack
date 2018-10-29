@@ -11,6 +11,7 @@ import styles.java.ConnectionStyles;
 
 public class ConnectionScene {
 
+    //this is the screen that is displayed when the user presses the "Play Game Button"
     Hyperlink connectionButton = new Hyperlink(GeneralConstants.connectDialogName);
     Hyperlink hostGameButton = new Hyperlink(GeneralConstants.hostDialogName);
     Hyperlink mainMenuButton = new Hyperlink(GeneralConstants.mainMenuButton);
@@ -25,15 +26,19 @@ public class ConnectionScene {
     Hyperlink confirmationButton = new Hyperlink(GeneralConstants.connectDialogName);
     Hyperlink returnButton = new Hyperlink(GeneralConstants.returnButtonName);
 
+    //the main program that creates our scene
     public void setSceneState(GridPane root) {
         GridPane sceneRoot = new GridPane();
         GridPane dialog = new GridPane();
 
         titleLabel.setId("titleLabel");
 
+        //make sure all our nodes are centered
         GridPane.setHalignment(connectionButton, HPos.CENTER);
         GridPane.setHalignment(hostGameButton, HPos.CENTER);
         GridPane.setHalignment(mainMenuButton, HPos.CENTER);
+
+        //apply some beautiful css styling
         dialog.setId("dialogMain");
         sceneRoot.setAlignment(Pos.CENTER);
 
@@ -44,6 +49,7 @@ public class ConnectionScene {
 
         connectionStyles.setConnectionStyles(sceneRoot);
 
+        //add our subpanes to sub-root
         dialog.add(titleLabel, 0, 0);
         dialog.add(hostGameButton, 0, 1);
         dialog.add(connectionButton, 0, 2);
@@ -52,6 +58,7 @@ public class ConnectionScene {
 
         sceneRoot.add(dialog, 0, 0);
 
+        //add sub-root to root
         root.add(sceneRoot, 0,0);
 
         setLinkHandlers();
@@ -59,6 +66,7 @@ public class ConnectionScene {
     }
 
     private void setLinkHandlers() {
+        //handle our buttons
         mainMenuButton.setOnAction(event -> {
             sceneController.setScene(0);
         });
@@ -78,6 +86,7 @@ public class ConnectionScene {
     }
 
     public void showConnectScene(GridPane root) {
+        //show a connect dialog
         GridPane sceneRoot = new GridPane();
         GridPane dialog = new GridPane();
         GridPane topDialog = new GridPane();
@@ -89,6 +98,7 @@ public class ConnectionScene {
         returnButton.setId("ipButton");
         dialog.setId("dialogSecond");
 
+        //center all our stuffz
         GridPane.setHalignment(titleLabel, HPos.CENTER);
         GridPane.setHalignment(ipBox, HPos.CENTER);
         GridPane.setHalignment(confirmationButton, HPos.CENTER);
