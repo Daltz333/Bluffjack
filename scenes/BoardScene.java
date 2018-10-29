@@ -8,7 +8,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import logic.GameCard;
 import logic.GameMain;
+import sockets.Server;
 import styles.java.BoardStyles;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class BoardScene {
     //framework of board screen
@@ -36,6 +42,8 @@ public class BoardScene {
     //sub panes of center board
     GridPane playerRow = new GridPane();
     GridPane opponentRow = new GridPane();
+
+    Server server = new Server();
 
     public void setMainBoard(GridPane root) {
 
@@ -132,6 +140,11 @@ public class BoardScene {
 
         HitMeOption.setOnAction(event -> {
             gameController.giveCard(playerRow);
+        });
+
+        PassOption.setOnAction(event -> {
+            Server server = new Server();
+
         });
     }
 

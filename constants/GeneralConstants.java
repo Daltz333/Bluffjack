@@ -40,4 +40,7 @@ public class GeneralConstants {
     public static final boolean debugEnabled = false;
 
     public static final double deckHGap = 2;
+
+    //networking constants
+    public static final int applicationPort = 1935;
 }

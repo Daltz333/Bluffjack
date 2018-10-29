@@ -8,7 +8,9 @@ import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import sockets.Server;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,13 +24,17 @@ public class GameMain {
     private ArrayList<GameCard> playerHand = new ArrayList<>();
     private ArrayList<GameCard> opponentHand = new ArrayList<GameCard>();
 
+    Server serverConnection = new Server();
+
     public void startGame(GridPane playerRow, GridPane opponentRow) {
+        //close when application closes
+
         if (!givenInitialCards) {
             //grab random VALID int, create new card of that int
-            int cardOne = rand.nextInt(11);
+            int cardOne = rand.nextInt(10);
             exclusions.add(cardOne);
 
-            int cardTwo = Utilities.getRandomWithExclusion(rand, 0, 11, exclusions);
+            int cardTwo = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
             exclusions.add(cardTwo);
 
             //set first card object to have overlay *temporary*
@@ -62,10 +68,12 @@ public class GameMain {
 
     //logic to displaying card in specified row
     public void giveCard(GridPane playerRow) {
-        int cardInt = Utilities.getRandomWithExclusion(rand, 0, 11, exclusions);
+        int cardInt = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
 
         System.out.println(exclusions);
         System.out.println("Random card is: " + cardInt);
+
+
 
         //do not proceed if no cards left in deck
         if (!(cardInt == -1)) {

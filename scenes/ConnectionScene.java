@@ -7,7 +7,10 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import sockets.Client;
 import styles.java.ConnectionStyles;
+
+import java.io.IOException;
 
 public class ConnectionScene {
 
@@ -124,6 +127,25 @@ public class ConnectionScene {
 
         root.add(sceneRoot, 0,0);
 
+        confirmationButton.setOnAction(event -> {
+            Client client = new Client();
+            try {
+                client.connectToHost("localhost");
+
+            } catch (IOException e) {
+                System.out.println("Unable to connect to host");
+
+            }
+
+            System.out.println("Connected to host?: " + client.returnClientConnected());
+            try {
+                System.out.println("sent data");
+                client.sendSocketData("Brandon is a lesbian");
+            } catch (IOException e) {
+                System.out.println("Unable to send socket data");
+            }
+
+        });
 
     }
 

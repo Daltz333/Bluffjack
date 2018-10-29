@@ -1,17 +1,25 @@
 import constants.GeneralConstants;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import logic.GameMain;
 import scenes.SceneController;
+import sockets.Server;
 import styles.java.RootStyles;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
     private RootStyles rootStyles = new RootStyles();
     private SceneController sceneController = new SceneController();
+    private Server server = new Server();
 
     @Override
     public void start(Stage primaryStage) {
@@ -41,6 +49,15 @@ public class Main extends Application {
         root.getColumnConstraints().add(column1);
         root.getRowConstraints().add(row1);
 
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                System.out.println("Stopped Process");
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
     }
 
 
@@ -48,8 +65,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    @Override
     public void stop() {
-        //
+
     }
 }
