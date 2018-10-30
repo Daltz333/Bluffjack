@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import logic.GameCard;
 import logic.GameMain;
+import sockets.Controller;
 import sockets.Server;
 import styles.java.BoardStyles;
 
@@ -49,8 +50,10 @@ public class BoardScene {
 
         //check if board was previously created, prevent null pointer exception
         if(mainBoard.getChildren().isEmpty()) {
+
+            server.startHost();
             //set our styles
-            boardStyles.setBoardtyles(mainBoard);
+            boardStyles.setBoardStyles(mainBoard);
             mainBoard.setId("mainBoard");
             playerSide.setId("playerRoot");
             opponentSide.setId("playerRoot");
@@ -143,7 +146,8 @@ public class BoardScene {
         });
 
         PassOption.setOnAction(event -> {
-            Server server = new Server();
+            System.out.println("Main Thread: " + server.returnData());
+
 
         });
     }

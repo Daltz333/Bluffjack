@@ -129,20 +129,16 @@ public class ConnectionScene {
 
         confirmationButton.setOnAction(event -> {
             Client client = new Client();
-            try {
-                client.connectToHost("localhost");
-
-            } catch (IOException e) {
-                System.out.println("Unable to connect to host");
-
-            }
+            client.connectToHost("localhost");
 
             System.out.println("Connected to host?: " + client.returnClientConnected());
             try {
                 System.out.println("sent data");
-                client.sendSocketData("Brandon is a lesbian");
+                client.sendSocketData("Brandon is a scrub");
+
             } catch (IOException e) {
                 System.out.println("Unable to send socket data");
+
             }
 
         });

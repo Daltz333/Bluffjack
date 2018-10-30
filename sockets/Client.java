@@ -17,8 +17,14 @@ public class Client{
     private BufferedReader in;
     private Socket socket;
 
-    public synchronized void connectToHost(String hostName) throws IOException{
-        socket = new Socket(hostName, GeneralConstants.applicationPort);
+    public synchronized void connectToHost(String hostName) {
+        try {
+            socket = new Socket(hostName, GeneralConstants.applicationPort);
+
+        } catch (IOException e) {
+            System.out.println("Does host exist?");
+
+        }
 
     }
 
@@ -28,7 +34,6 @@ public class Client{
 
         } catch (IOException e) {
             System.out.println("Unable to close client socket");
-            e.printStackTrace();
 
         }
 
