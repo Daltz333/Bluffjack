@@ -133,7 +133,7 @@ public class ConnectionScene {
 			System.out.println("Connected to host?: " + client.returnClientConnected());
 			try {
 				System.out.println("sent data");
-				client.sendSocketData("Brandon is a scrub");
+				client.sendSocketData(ipBox.getText());
 
 			} catch (IOException e) {
 				System.out.println("Unable to send socket data");

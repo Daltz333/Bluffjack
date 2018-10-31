@@ -33,7 +33,6 @@ public class Server {
 					System.out.println("Null server");
 					break;
 				}
-				System.out.println("why");
 				try {
 					Socket client = server.accept();
 
@@ -43,8 +42,11 @@ public class Server {
 						HC = new ClientHandler("client", client, controller);
 						isConnected = true;
 						System.out.println("Client Connected: " + isConnected);
-					} else {
 						HC.receive();
+
+					} else {
+                        HC.receive();
+
 					}
 
 				} catch (IOException e) {

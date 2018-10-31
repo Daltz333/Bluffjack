@@ -12,18 +12,14 @@ public class Controller {
 
 	ConcurrentLinkedQueue<String> stringQueue = new ConcurrentLinkedQueue<>();
 
-	public void createClientHandler(Socket client) {
-
-	}
-
 	public void handleReceivedPacket(String name, BufferedReader in) {
 		try {
-			System.out.println(in.lines());
-			System.out.println(in.ready());
 			stringQueue.add(in.readLine());
-			System.out.println("Result of data.get(i) inside mini-thread: " + stringQueue.peek());
+			System.out.println("The following data has been added to the queue: " + stringQueue.peek());
+
 		} catch (IOException e) {
 			System.out.println("Unable to read result data");
+
 		}
 	}
 
