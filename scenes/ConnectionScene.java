@@ -16,6 +16,9 @@ public class ConnectionScene {
 
 	// this is the screen that is displayed when the user presses the "Play Game
 	// Button"
+
+    Client client = new Client();
+
 	Hyperlink connectionButton = new Hyperlink(GeneralConstants.connectDialogName);
 	Hyperlink hostGameButton = new Hyperlink(GeneralConstants.hostDialogName);
 	Hyperlink mainMenuButton = new Hyperlink(GeneralConstants.mainMenuButton);
@@ -127,20 +130,16 @@ public class ConnectionScene {
 		root.add(sceneRoot, 0, 0);
 
 		confirmationButton.setOnAction(event -> {
-			Client client = new Client();
-			client.connectToHost("localhost");
+		    if (!client.returnClientConnected()) {
+                client.connectToHost(ipBox.getText());
+            } else {
+		        System.out.println("Already connected to server");
+		        client.sendSocketData("Test");
+		        System.out.println("Server Response: " + client.returnSocketData());
 
-			System.out.println("Connected to host?: " + client.returnClientConnected());
-			try {
-				System.out.println("sent data");
-				client.sendSocketData(ipBox.getText());
+            }
 
-			} catch (IOException e) {
-				System.out.println("Unable to send socket data");
-
-			}
-
-		});
+        });
 
 	}
 

@@ -38,4 +38,6 @@ public class GeneralConstants {
 
 	// networking constants
 	public static final int applicationPort = 1935;
+	public static final int hostTimeout = 1000; //in millisec
+
 }

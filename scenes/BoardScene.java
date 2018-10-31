@@ -3,6 +3,7 @@ package scenes;
 import constants.GeneralConstants;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -43,6 +44,8 @@ public class BoardScene {
 	// sub panes of center board
 	GridPane playerRow = new GridPane();
 	GridPane opponentRow = new GridPane();
+
+	Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
 	Server server = new Server();
 
@@ -142,10 +145,15 @@ public class BoardScene {
 
 		HitMeOption.setOnAction(event -> {
 			gameController.giveCard(playerRow);
+
 		});
 
 		PassOption.setOnAction(event -> {
-			System.out.println("Main Thread: " + server.returnData());
+			alert.setTitle("Message Alert");
+			alert.setHeaderText("The following message was sent from the client");
+			server.sendData("Test");
+			alert.setContentText(server.returnData());
+			alert.showAndWait();
 
 		});
 	}

@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class Server {
 
-	boolean isConnected = false;
+	static boolean isConnected = false;
 	Controller controller = new Controller();
 	ClientHandler HC = null;
 
@@ -49,11 +49,9 @@ public class Server {
 
 					}
 
-				} catch (IOException e) {
-					e.printStackTrace();
-
 				} catch (Exception e) {
 					e.printStackTrace();
+
 				}
 			}
 		});
@@ -67,4 +65,9 @@ public class Server {
 
 		return controller.returnData();
 	}
+
+	public boolean sendData(String data) {
+
+	    return HC.sendData(data);
+    }
 }

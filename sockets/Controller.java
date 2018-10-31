@@ -24,6 +24,8 @@ public class Controller {
 	}
 
 	public String returnData() {
-		return stringQueue.peek();
+		return stringQueue.poll();
+
 	}
+
 }

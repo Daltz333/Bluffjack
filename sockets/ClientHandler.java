@@ -1,5 +1,7 @@
 package sockets;
 
+import constants.GeneralConstants;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -20,12 +22,8 @@ public class ClientHandler {
 		controller = c;
 
 		receiveThread = new Thread(this::receive);
-		sendThread = new Thread(this::send);
 
 		connected = clientSocket.isConnected();
-
-		//receiveThread.start();
-		//sendThread.start();
 
 	}
 
@@ -43,50 +41,44 @@ public class ClientHandler {
 
 		System.out.println("Reader Connected? " + connected);
 		while (connected) {
-			try {
-				// check if gotten value from stream
-				if (in.ready()) {
-					controller.handleReceivedPacket(clientName, in);
 
-				} else {
-					Thread.sleep(1000);
-				}
+		    if (in == null) {
+		        connected = false;
+		        break;
+
+            }
+
+			try {
+				//check if gotten value from stream, add values
+				while (in.ready()) {
+                    controller.handleReceivedPacket(clientName, in);
+
+                }
+                Thread.sleep(GeneralConstants.hostTimeout);
 				Thread.yield();
+
 			} catch (IOException | InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	private void send() {
-		PrintWriter out = null;
-		try {
-			out = new PrintWriter(clientSocket.getOutputStream());
+	public boolean sendData(String data) {
+        try {
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            out.println(data);
+            return true;
 
-		} catch (IOException e) {
-			connected = false;
+        } catch (IOException e) {
+            System.out.println("Unable to create output stream to client");
+            return false;
 
-		}
-		while (connected) {
-			String toSend = sendData;
-			if (toSend != null) {
-				out.println(toSend);
-
-			}
-		}
-	}
-
-	public void send(String data) {
-		sendData = data;
-
-	}
+        }
+    }
 
 	public void close() {
 		connected = false;
-	}
 
-	public void setController(Controller c) {
-		controller =c;
 	}
 
 }
