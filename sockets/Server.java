@@ -9,53 +9,60 @@ import java.net.Socket;
 
 public class Server {
 
-    boolean isConnected = false;
-    Controller controller = new Controller();
+	boolean isConnected = false;
+	Controller controller = new Controller();
+	ClientHandler HC = null;
 
-    public void startHost() {
-        Thread host = new Thread(() -> {
-            Controller controller = new Controller();
-            ServerSocket server = null;
+	public void startHost() {
+		Thread host = new Thread(() -> {
+			ServerSocket server = null;
+			try {
+				server = new ServerSocket(GeneralConstants.applicationPort);
 
-            try {
-                server = new ServerSocket(GeneralConstants.applicationPort);
+			} catch (BindException e2) {
+				System.out.println("Port Already in Use!");
 
-            } catch (BindException e2) {
-                System.out.println("Port Already in Use!");
+			} catch (IOException e) {
+				e.printStackTrace();
 
-            } catch (IOException e) {
-                //do nothing
+			}
 
-            }
+			while (true) {
 
-            while (true) {
-                if (server == null) { break; }
+				if (server == null) {
+					System.out.println("Null server");
+					break;
+				}
+				System.out.println("why");
+				try {
+					Socket client = server.accept();
 
-                try {
-                    Socket client = server.accept();
+					System.out.println("Client Connected: " + isConnected);
 
-                    System.out.println("Client Connected: " + isConnected);
+					if (!isConnected) {
+						HC = new ClientHandler("client", client, controller);
+						isConnected = true;
+						System.out.println("Client Connected: " + isConnected);
+					} else {
+						HC.receive();
+					}
 
-                    if (!isConnected) {
-                        controller.createClientHandler(client);
-                        isConnected = true;
-                        System.out.println("Client Connected: " + isConnected);
-                    }
+				} catch (IOException e) {
+					e.printStackTrace();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
-                }
-            }
-        });
+		host.setDaemon(true);
+		host.start();
 
-        host.setDaemon(true);
-        host.start();
+	}
 
-    }
+	public String returnData() {
 
-    public String returnData() {
-
-        return controller.returnData();
-    }
+		return controller.returnData();
+	}
 }

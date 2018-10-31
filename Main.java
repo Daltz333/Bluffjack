@@ -17,55 +17,53 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private RootStyles rootStyles = new RootStyles();
-    private SceneController sceneController = new SceneController();
-    private Server server = new Server();
+	private RootStyles rootStyles = new RootStyles();
+	private SceneController sceneController = new SceneController();
 
-    @Override
-    public void start(Stage primaryStage) {
-        GridPane root = new GridPane();
+	@Override
+	public void start(Stage primaryStage) {
+		GridPane root = new GridPane();
 
-        //set stage information
-        primaryStage.setTitle(GeneralConstants.projectName);
-        primaryStage.setMaximized(true);
-        primaryStage.setScene(new Scene(root, 960, 540));
-        primaryStage.show();
+		// set stage information
+		primaryStage.setTitle(GeneralConstants.projectName);
+		primaryStage.setMaximized(true);
+		primaryStage.setScene(new Scene(root, 960, 540));
+		primaryStage.show();
 
-        //pass main root to scene controller
-        SceneController.root = root;
+		// pass main root to scene controller
+		SceneController.root = root;
 
-        rootStyles.setRootStyles(root);
-        SceneController.manageScenes();
+		rootStyles.setRootStyles(root);
+		SceneController.manageScenes();
 
-        //set fixed aspect ratio
-        primaryStage.setMinHeight(GeneralConstants.minWindowHeight);
-        primaryStage.setMinWidth(GeneralConstants.minWindowWidth);
+		// set fixed aspect ratio
+		primaryStage.setMinHeight(GeneralConstants.minWindowHeight);
+		primaryStage.setMinWidth(GeneralConstants.minWindowWidth);
 
-        //have subroots fill root completely
-        ColumnConstraints column1 = new ColumnConstraints();
-        RowConstraints row1 = new RowConstraints();
-        column1.setPercentWidth(100);
-        row1.setPercentHeight(100);
-        root.getColumnConstraints().add(column1);
-        root.getRowConstraints().add(row1);
+		// have subroots fill root completely
+		ColumnConstraints column1 = new ColumnConstraints();
+		RowConstraints row1 = new RowConstraints();
+		column1.setPercentWidth(100);
+		row1.setPercentHeight(100);
+		root.getColumnConstraints().add(column1);
+		root.getRowConstraints().add(row1);
 
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                System.out.println("Stopped Process");
-                Platform.exit();
-                System.exit(0);
-            }
-        });
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent t) {
+				System.out.println("Stopped Process");
+				Platform.exit();
+				System.exit(0);
+			}
+		});
 
-    }
+	}
 
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public void stop() {
 
-    public void stop() {
-
-    }
+	}
 }

@@ -9,38 +9,38 @@ import java.util.ArrayList;
 
 public class GameCard extends Region {
 
-    ImageView coverImage;
-    Button imageButton;
-    String value;
+	ImageView coverImage;
+	Button imageButton;
+	String value;
 
-    private String stylesheet = this.getClass().getResource("/styles/css/CardStyles.css").toExternalForm();
+	private String stylesheet = this.getClass().getResource("/styles/css/CardStyles.css").toExternalForm();
 
-    //card constructor
-    public GameCard(String cardNum, int cardType) {
-        this.value = cardNum;
+	// card constructor
+	public GameCard(String cardNum, int cardType) {
+		this.value = cardNum;
 
-        imageButton = new Button(cardNum);
+		imageButton = new Button(cardNum);
 
-        imageButton.getStylesheets().add(stylesheet);
+		imageButton.getStylesheets().add(stylesheet);
 
-        imageButton.setPrefSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
-        imageButton.setId("gameCard");
-    }
+		imageButton.setPrefSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
+		imageButton.setId("gameCard");
+	}
 
-    public Button returnGameCardCover() {
-        return this.imageButton;
+	public Button returnGameCardCover() {
+		return this.imageButton;
 
-    }
+	}
 
-    public static ArrayList<GameCard> generateGameDeck() {
-        ArrayList<GameCard> cardArray = new ArrayList<>();
+	public static ArrayList<GameCard> generateGameDeck() {
+		ArrayList<GameCard> cardArray = new ArrayList<>();
 
-        //create our array of game cards
-        for (int i = 0; i < 12; i++){
-            cardArray.add(new GameCard(String.valueOf(i), 0 ));
-        }
+		// create our array of game cards
+		for (int i = 0; i < 12; i++) {
+			cardArray.add(new GameCard(String.valueOf(i), 0));
+		}
 
-        return cardArray;
-    }
+		return cardArray;
+	}
 
 }

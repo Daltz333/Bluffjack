@@ -9,37 +9,25 @@ import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Controller {
-    BufferedReader input;
-ConcurrentLinkedQueue<String> stringQueue = new ConcurrentLinkedQueue<>();
 
-public void createClientHandler(Socket client) {
-    boolean alreadyConnected = false;
+	ConcurrentLinkedQueue<String> stringQueue = new ConcurrentLinkedQueue<>();
 
-    if (alreadyConnected) {
-        //do NOT assign multiple threads for each client
+	public void createClientHandler(Socket client) {
 
-    } else {
-        ClientHandler handleClients = new ClientHandler("client", client);
+	}
 
-    }
+	public void handleReceivedPacket(String name, BufferedReader in) {
+		try {
+			System.out.println(in.lines());
+			System.out.println(in.ready());
+			stringQueue.add(in.readLine());
+			System.out.println("Result of data.get(i) inside mini-thread: " + stringQueue.peek());
+		} catch (IOException e) {
+			System.out.println("Unable to read result data");
+		}
+	}
 
-}
-
-public void handleReceivedPacket(String name, BufferedReader in) {
-    try {
-        stringQueue.add(in.readLine());
-        System.out.println("Result of data.get(i) inside mini-thread: " +  stringQueue.peek());
-
-    } catch (IOException e) {
-        System.out.println("Unable to read result data");
-
-    }
-
-}
-
-public String returnData() {
-    return stringQueue.peek();
-
-}
-
+	public String returnData() {
+		return stringQueue.peek();
+	}
 }

@@ -11,52 +11,52 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class Client{
-    private boolean running;
-    private PrintWriter out;
-    private BufferedReader in;
-    private Socket socket;
+public class Client {
+	private boolean running;
+	private PrintWriter out;
+	private BufferedReader in;
+	private Socket socket;
 
-    public synchronized void connectToHost(String hostName) {
-        try {
-            socket = new Socket(hostName, GeneralConstants.applicationPort);
+	public synchronized void connectToHost(String hostName) {
+		try {
+			socket = new Socket(hostName, GeneralConstants.applicationPort);
 
-        } catch (IOException e) {
-            System.out.println("Does host exist?");
+		} catch (IOException e) {
+			System.out.println("Does host exist?");
 
-        }
+		}
 
-    }
+	}
 
-    public synchronized void stopClient(){
-        try {
-            socket.close();
+	public synchronized void stopClient() {
+		try {
+			socket.close();
 
-        } catch (IOException e) {
-            System.out.println("Unable to close client socket");
+		} catch (IOException e) {
+			System.out.println("Unable to close client socket");
 
-        }
+		}
 
-    }
+	}
 
-    public String returnSocketData() throws IOException {
-        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	public String returnSocketData() throws IOException {
+		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        String data = in.readLine();
-        in.close();
-        return data;
+		String data = in.readLine();
+		in.close();
+		return data;
 
-    }
+	}
 
-    public void sendSocketData(String data) throws IOException {
-        out = new PrintWriter(socket.getOutputStream(), true);
-        out.println(data);
+	public void sendSocketData(String data) throws IOException {
+		out = new PrintWriter(socket.getOutputStream(), true);
+		out.println(data);
 
-    }
+	}
 
-    public boolean returnClientConnected() {
+	public boolean returnClientConnected() {
 
-        return socket.isConnected();
-    }
+		return socket.isConnected();
+	}
 
 }

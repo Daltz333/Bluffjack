@@ -16,106 +16,102 @@ import java.util.Random;
 
 public class GameMain {
 
-    private boolean givenInitialCards = false;
-    private Random rand = new Random();
+	private boolean givenInitialCards = false;
+	private Random rand = new Random();
 
-    private ArrayList<Integer> exclusions = new ArrayList<Integer>();
-    private ArrayList<GameCard> deck = GameCard.generateGameDeck();
-    private ArrayList<GameCard> playerHand = new ArrayList<>();
-    private ArrayList<GameCard> opponentHand = new ArrayList<GameCard>();
+	private ArrayList<Integer> exclusions = new ArrayList<Integer>();
+	private ArrayList<GameCard> deck = GameCard.generateGameDeck();
+	private ArrayList<GameCard> playerHand = new ArrayList<>();
+	private ArrayList<GameCard> opponentHand = new ArrayList<GameCard>();
 
-    Server serverConnection = new Server();
+	// Server serverConnection = new Server();
 
-    public void startGame(GridPane playerRow, GridPane opponentRow) {
-        //close when application closes
+	public void startGame(GridPane playerRow, GridPane opponentRow) {
+		// close when application closes
 
-        if (!givenInitialCards) {
-            //grab random VALID int, create new card of that int
-            int cardOne = rand.nextInt(10);
-            exclusions.add(cardOne);
+		if (!givenInitialCards) {
+			// grab random VALID int, create new card of that int
+			int cardOne = rand.nextInt(10);
+			exclusions.add(cardOne);
 
-            int cardTwo = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
-            exclusions.add(cardTwo);
+			int cardTwo = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
+			exclusions.add(cardTwo);
 
-            //set first card object to have overlay *temporary*
-            GameCard cardObjectOne = new GameCard(Integer.toString(cardOne), 0);
-            ColorAdjust colorAdjust = new ColorAdjust();
-            colorAdjust.setBrightness(-0.2);
-            colorAdjust.setSaturation(0.8);
-            colorAdjust.setHue(-0.05);
-            cardObjectOne.returnGameCardCover().setEffect(colorAdjust);
+			// set first card object to have overlay *temporary*
+			GameCard cardObjectOne = new GameCard(Integer.toString(cardOne), 0);
+			ColorAdjust colorAdjust = new ColorAdjust();
+			colorAdjust.setBrightness(-0.2);
+			colorAdjust.setSaturation(0.8);
+			colorAdjust.setHue(-0.05);
+			cardObjectOne.returnGameCardCover().setEffect(colorAdjust);
 
-            GameCard cardObjectTwo = new GameCard(Integer.toString(cardTwo), 0);
+			GameCard cardObjectTwo = new GameCard(Integer.toString(cardTwo), 0);
 
-            playerHand.add(cardObjectOne);
-            playerHand.add(cardObjectTwo);
+			playerHand.add(cardObjectOne);
+			playerHand.add(cardObjectTwo);
 
-            playerRow.setAlignment(Pos.CENTER);
-            playerRow.setHgap(GeneralConstants.deckHGap);
+			playerRow.setAlignment(Pos.CENTER);
+			playerRow.setHgap(GeneralConstants.deckHGap);
 
-            playerRow.setGridLinesVisible(GeneralConstants.debugEnabled);
+			playerRow.setGridLinesVisible(GeneralConstants.debugEnabled);
 
-            playerRow.add(cardObjectOne.returnGameCardCover(), 0, 0);
-            playerRow.add(cardObjectTwo.returnGameCardCover(), 1, 0);
+			playerRow.add(cardObjectOne.returnGameCardCover(), 0, 0);
+			playerRow.add(cardObjectTwo.returnGameCardCover(), 1, 0);
 
-            givenInitialCards = true;
+			givenInitialCards = true;
 
-        } else {
+		} else {
 
-        }
+		}
 
-    }
+	}
 
-    //logic to displaying card in specified row
-    public void giveCard(GridPane playerRow) {
-        int cardInt = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
+	// logic to displaying card in specified row
+	public void giveCard(GridPane playerRow) {
+		int cardInt = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
 
-        System.out.println(exclusions);
-        System.out.println("Random card is: " + cardInt);
+		System.out.println(exclusions);
+		System.out.println("Random card is: " + cardInt);
 
+		// do not proceed if no cards left in deck
+		if (!(cardInt == -1)) {
+			GameCard cardObjectTwo = new GameCard(Integer.toString(cardInt), 0);
+			this.exclusions.add(cardInt);
 
+			boolean exit = false;
+			int i = 0;
 
-        //do not proceed if no cards left in deck
-        if (!(cardInt == -1)) {
-            GameCard cardObjectTwo = new GameCard(Integer.toString(cardInt), 0);
-            this.exclusions.add(cardInt);
+			// check next available index of row
+			while (!exit) {
+				try {
+					playerRow.getChildren().get(i);
+					// do nothing
+				} catch (Exception e) {
+					System.out.println("Empty Index is: " + i);
+					exit = true;
+					break;
+				}
+				i++;
+			}
 
-            boolean exit = false;
-            int i = 0;
+			playerRow.add(cardObjectTwo.returnGameCardCover(), i, 0);
 
-            //check next available index of row
-            while (!exit) {
-                try {
-                    playerRow.getChildren().get(i);
-                    //do nothing
-                } catch(Exception e) {
-                    System.out.println("Empty Index is: " + i);
-                    exit = true;
-                    break;
-                }
-                i++;
-            }
+		} else {
+			// do nothing
 
-            playerRow.add(cardObjectTwo.returnGameCardCover(), i, 0);
+		}
 
-        } else {
-            //do nothing
+	}
 
-        }
+	public void stopGame(GridPane playerRow) {
+		exclusions.clear();
+		deck.clear();
+		opponentHand.clear();
+		playerHand.clear();
+		givenInitialCards = false;
 
-    }
+		playerRow.getChildren().clear();
 
-
-    public void stopGame(GridPane playerRow) {
-        exclusions.clear();
-        deck.clear();
-        opponentHand.clear();
-        playerHand.clear();
-        givenInitialCards = false;
-
-        playerRow.getChildren().clear();
-
-    }
-
+	}
 
 }

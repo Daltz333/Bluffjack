@@ -14,135 +14,134 @@ import java.io.IOException;
 
 public class ConnectionScene {
 
-    //this is the screen that is displayed when the user presses the "Play Game Button"
-    Hyperlink connectionButton = new Hyperlink(GeneralConstants.connectDialogName);
-    Hyperlink hostGameButton = new Hyperlink(GeneralConstants.hostDialogName);
-    Hyperlink mainMenuButton = new Hyperlink(GeneralConstants.mainMenuButton);
+	// this is the screen that is displayed when the user presses the "Play Game
+	// Button"
+	Hyperlink connectionButton = new Hyperlink(GeneralConstants.connectDialogName);
+	Hyperlink hostGameButton = new Hyperlink(GeneralConstants.hostDialogName);
+	Hyperlink mainMenuButton = new Hyperlink(GeneralConstants.mainMenuButton);
 
-    Label titleLabel = new Label(GeneralConstants.projectName);
+	Label titleLabel = new Label(GeneralConstants.projectName);
 
-    SceneController sceneController = new SceneController();
+	SceneController sceneController = new SceneController();
 
-    ConnectionStyles connectionStyles = new ConnectionStyles();
+	ConnectionStyles connectionStyles = new ConnectionStyles();
 
-    TextField ipBox = new TextField();
-    Hyperlink confirmationButton = new Hyperlink(GeneralConstants.connectDialogName);
-    Hyperlink returnButton = new Hyperlink(GeneralConstants.returnButtonName);
+	TextField ipBox = new TextField();
+	Hyperlink confirmationButton = new Hyperlink(GeneralConstants.connectDialogName);
+	Hyperlink returnButton = new Hyperlink(GeneralConstants.returnButtonName);
 
-    //the main program that creates our scene
-    public void setSceneState(GridPane root) {
-        GridPane sceneRoot = new GridPane();
-        GridPane dialog = new GridPane();
+	// the main program that creates our scene
+	public void setSceneState(GridPane root) {
+		GridPane sceneRoot = new GridPane();
+		GridPane dialog = new GridPane();
 
-        titleLabel.setId("titleLabel");
+		titleLabel.setId("titleLabel");
 
-        //make sure all our nodes are centered
-        GridPane.setHalignment(connectionButton, HPos.CENTER);
-        GridPane.setHalignment(hostGameButton, HPos.CENTER);
-        GridPane.setHalignment(mainMenuButton, HPos.CENTER);
+		// make sure all our nodes are centered
+		GridPane.setHalignment(connectionButton, HPos.CENTER);
+		GridPane.setHalignment(hostGameButton, HPos.CENTER);
+		GridPane.setHalignment(mainMenuButton, HPos.CENTER);
 
-        //apply some beautiful css styling
-        dialog.setId("dialogMain");
-        sceneRoot.setAlignment(Pos.CENTER);
+		// apply some beautiful css styling
+		dialog.setId("dialogMain");
+		sceneRoot.setAlignment(Pos.CENTER);
 
-        sceneRoot.setId("sceneRoot");
-        connectionButton.setId("connectionButton");
-        hostGameButton.setId("connectionButton");
-        mainMenuButton.setId("connectionButton");
+		sceneRoot.setId("sceneRoot");
+		connectionButton.setId("connectionButton");
+		hostGameButton.setId("connectionButton");
+		mainMenuButton.setId("connectionButton");
 
-        connectionStyles.setConnectionStyles(sceneRoot);
+		connectionStyles.setConnectionStyles(sceneRoot);
 
-        //add our subpanes to sub-root
-        dialog.add(titleLabel, 0, 0);
-        dialog.add(hostGameButton, 0, 1);
-        dialog.add(connectionButton, 0, 2);
-        dialog.add(mainMenuButton, 0, 3);
-        dialog.setAlignment(Pos.CENTER);
+		// add our subpanes to sub-root
+		dialog.add(titleLabel, 0, 0);
+		dialog.add(hostGameButton, 0, 1);
+		dialog.add(connectionButton, 0, 2);
+		dialog.add(mainMenuButton, 0, 3);
+		dialog.setAlignment(Pos.CENTER);
 
-        sceneRoot.add(dialog, 0, 0);
+		sceneRoot.add(dialog, 0, 0);
 
-        //add sub-root to root
-        root.add(sceneRoot, 0,0);
+		// add sub-root to root
+		root.add(sceneRoot, 0, 0);
 
-        setLinkHandlers();
+		setLinkHandlers();
 
-    }
+	}
 
-    private void setLinkHandlers() {
-        //handle our buttons
-        mainMenuButton.setOnAction(event -> {
-            sceneController.setScene(0);
-        });
+	private void setLinkHandlers() {
+		// handle our buttons
+		mainMenuButton.setOnAction(event -> {
+			sceneController.setScene(0);
+		});
 
-        connectionButton.setOnAction(event -> {
-            sceneController.setScene(2);
-        });
+		connectionButton.setOnAction(event -> {
+			sceneController.setScene(2);
+		});
 
-        returnButton.setOnAction(event -> {
-            sceneController.setScene(1);
-        });
+		returnButton.setOnAction(event -> {
+			sceneController.setScene(1);
+		});
 
-        hostGameButton.setOnAction(event -> {
-            sceneController.setScene(3);
-        });
+		hostGameButton.setOnAction(event -> {
+			sceneController.setScene(3);
+		});
 
-    }
+	}
 
-    public void showConnectScene(GridPane root) {
-        //show a connect dialog
-        GridPane sceneRoot = new GridPane();
-        GridPane dialog = new GridPane();
-        GridPane topDialog = new GridPane();
+	public void showConnectScene(GridPane root) {
+		// show a connect dialog
+		GridPane sceneRoot = new GridPane();
+		GridPane dialog = new GridPane();
+		GridPane topDialog = new GridPane();
 
-        titleLabel.setId("titleLabel");
-        ipBox.setId("ipBox");
-        confirmationButton.setId("ipButton");
-        sceneRoot.setId("sceneRoot");
-        returnButton.setId("ipButton");
-        dialog.setId("dialogSecond");
+		titleLabel.setId("titleLabel");
+		ipBox.setId("ipBox");
+		confirmationButton.setId("ipButton");
+		sceneRoot.setId("sceneRoot");
+		returnButton.setId("ipButton");
+		dialog.setId("dialogSecond");
 
-        //center all our stuffz
-        GridPane.setHalignment(titleLabel, HPos.CENTER);
-        GridPane.setHalignment(ipBox, HPos.CENTER);
-        GridPane.setHalignment(confirmationButton, HPos.CENTER);
-        GridPane.setHalignment(returnButton, HPos.CENTER);
+		// center all our stuffz
+		GridPane.setHalignment(titleLabel, HPos.CENTER);
+		GridPane.setHalignment(ipBox, HPos.CENTER);
+		GridPane.setHalignment(confirmationButton, HPos.CENTER);
+		GridPane.setHalignment(returnButton, HPos.CENTER);
 
-        sceneRoot.setAlignment(Pos.CENTER);
-        topDialog.setAlignment(Pos.CENTER);
+		sceneRoot.setAlignment(Pos.CENTER);
+		topDialog.setAlignment(Pos.CENTER);
 
+		connectionStyles.setConnectionStyles(sceneRoot);
 
-        connectionStyles.setConnectionStyles(sceneRoot);
+		// dialog.setGridLinesVisible(true);
 
-        //dialog.setGridLinesVisible(true);
+		topDialog.add(titleLabel, 0, 0);
+		topDialog.add(ipBox, 0, 1);
+		dialog.add(confirmationButton, 0, 0);
+		dialog.add(returnButton, 1, 0);
+		dialog.setAlignment(Pos.CENTER);
 
+		sceneRoot.add(topDialog, 0, 0);
+		sceneRoot.add(dialog, 0, 1);
 
-        topDialog.add(titleLabel, 0, 0);
-        topDialog.add(ipBox, 0, 1);
-        dialog.add(confirmationButton, 0, 0);
-        dialog.add(returnButton, 1, 0);
-        dialog.setAlignment(Pos.CENTER);
+		root.add(sceneRoot, 0, 0);
 
-        sceneRoot.add(topDialog, 0, 0);
-        sceneRoot.add(dialog, 0, 1);
+		confirmationButton.setOnAction(event -> {
+			Client client = new Client();
+			client.connectToHost("localhost");
 
-        root.add(sceneRoot, 0,0);
+			System.out.println("Connected to host?: " + client.returnClientConnected());
+			try {
+				System.out.println("sent data");
+				client.sendSocketData("Brandon is a scrub");
 
-        confirmationButton.setOnAction(event -> {
-            Client client = new Client();
-            client.connectToHost("localhost");
+			} catch (IOException e) {
+				System.out.println("Unable to send socket data");
 
-            System.out.println("Connected to host?: " + client.returnClientConnected());
-            try {
-                System.out.println("sent data");
-                client.sendSocketData("Brandon is a scrub");
+			}
 
-            } catch (IOException e) {
-                System.out.println("Unable to send socket data");
+		});
 
-            }
-
-        });
-
-    }
+	}
 
 }
