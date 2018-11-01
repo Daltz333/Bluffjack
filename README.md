@@ -1,5 +1,5 @@
 # Bluffjack
-A multiplayer blackjack game based on Resident Evil 7's 21.
+A multiplayer blackjack game inspired by Resident Evil 7's 21.
 
 <hr/>
 
