@@ -20,21 +20,29 @@ public class Client {
     private boolean connected = false;
     private boolean connectToClient = true;
     private ConcurrentLinkedQueue<String> receiveQueue = new ConcurrentLinkedQueue<>();
+    private boolean connectingToClient = false;
+    private boolean forceStop = false;
 
     public synchronized void connectToHost(String hostName) {
-
         Thread clientConnect = new Thread(() -> {
             BufferedReader readFromServer = null;
             while (connectToClient) {
                 try {
+                    connectingToClient = true;
                     socket = new Socket(hostName, GeneralConstants.applicationPort);
                     readFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     connected = true;
-                    System.out.println("Connected to host: " + connected);
+                    System.out.println("Connected to host: " + socket.getInetAddress());
+
+                    if (forceStop == true) {
+                        forceStop = false;
+                        break;
+                    }
 
                 } catch (IOException e) {
                     System.out.println("Does host exist?");
-                    connectToClient = false;
+                    connected = false;
+                    break;
 
                 }
 
@@ -50,18 +58,25 @@ public class Client {
                             receiveQueue.add(readFromServer.readLine());
 
                             if (!readFromServer.ready()) {
-                                if (readFromServer.read() == -1) {
-                                    System.out.println("Host disconnected");
-                                    connected = false;
-
-                                }
+                                System.out.println("No more data detected");
 
                             }
 
+                        } else {
+                            String data = readFromServer.readLine();
+
+                            if (data == null) {
+                                connected = false;
+
+                            } else {
+                                receiveQueue.add(data);
+
+                            }
                         }
 
                     } catch (IOException e) {
                         System.out.println("Unable to read from server");
+                        connected = false;
 
                     }
 
@@ -70,7 +85,9 @@ public class Client {
             }
 
             try {
-                socket.close();
+                if (!(socket == null)) {
+                    socket.close();
+                }
 
                 if (readFromServer != null) {
                     readFromServer.close();
@@ -83,16 +100,29 @@ public class Client {
 
         });
 
-        if (!clientConnect.isAlive()) {
+        System.out.println(Thread.activeCount());
+
+        if (connectingToClient == false) {
+            System.out.println("Starting host");
             clientConnect.setDaemon(true);
             clientConnect.start();
+
+        } else {
+            stopClient();
+            System.out.println("Stopping Client");
+            connectingToClient = false;
 
         }
 
     }
 
+    public synchronized boolean clientActive() {
+
+        return connected;
+    }
+
     public synchronized void stopClient() {
-        connectToClient = false;
+        forceStop = true;
         connected = false;
 
     }
@@ -120,11 +150,5 @@ public class Client {
         return true;
 
     }
-
-    public boolean returnClientConnected () {
-
-        return connected;
-    }
-
 
 }

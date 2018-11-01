@@ -54,6 +54,7 @@ public class SceneController {
 		root.getChildren().clear();
 		root.getChildren().removeAll();
 		manageScenes();
+
 	}
 
 }

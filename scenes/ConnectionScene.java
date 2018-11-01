@@ -130,8 +130,10 @@ public class ConnectionScene {
 		root.add(sceneRoot, 0, 0);
 
 		confirmationButton.setOnAction(event -> {
-		    if (!client.returnClientConnected()) {
+		    if (!client.clientActive()) {
+		        System.out.println("Connecting to server");
                 client.connectToHost(ipBox.getText());
+
             } else {
 		        System.out.println("Already connected to server");
 		        client.sendSocketData("Test");

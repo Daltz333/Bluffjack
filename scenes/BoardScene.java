@@ -139,8 +139,10 @@ public class BoardScene {
 	private void setEventHandlers() {
 		// handle our buttons here
 		exitGame.setOnAction(event -> {
+		    server.stopHost();
 			gameController.stopGame(playerRow);
 			sceneController.setScene(0);
+
 		});
 
 		HitMeOption.setOnAction(event -> {
