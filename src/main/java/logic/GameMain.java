@@ -31,7 +31,7 @@ public class GameMain {
 
 		if (!givenInitialCards) {
 			// grab random VALID int, create new card of that int
-			int cardOne = rand.nextInt(10);
+			int cardOne = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
 			exclusions.add(cardOne);
 
 			int cardTwo = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
