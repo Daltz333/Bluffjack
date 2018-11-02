@@ -3,6 +3,17 @@ A multiplayer blackjack game inspired by Resident Evil 7's 21.
 
 <hr/>
 
+## Building Project
+`git clone https://github.com/Daltz333/Bluffjack.git`  
+`cd Bluffjack`  
+`gradlew build`  
+Jar will be located in the Out/Lib directory
+
+## Running via Gradle
+`git clone https://github.com/Daltz333/Bluffjack.git`  
+`cd Fluffjack`  
+`gradlew run`  
+
 ## Summary
 A not so typical game of Blackjack, called Bluffjack. There is only one of each number in the deck,  
 and you and your opponent share the same deck. This isn't all... There are a few "special" cards in the deck.  
