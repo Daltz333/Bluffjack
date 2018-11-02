@@ -48,4 +48,3 @@ https://trello.com/b/HduHQd1A/bluffjack-development-board
 ## Credits
 Dalton Smith - Programmer and Project Coordinator  
 Jacob Egnor  - Artwork and Design  
-Cory James   - Artwork and Design  
