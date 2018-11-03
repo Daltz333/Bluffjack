@@ -1,5 +1,6 @@
 package scenes;
 
+import configurations.BoardStyles;
 import constants.GeneralConstants;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -10,7 +11,6 @@ import javafx.scene.layout.GridPane;
 import logic.GameCard;
 import logic.GameMain;
 import sockets.Server;
-import configurations.BoardStyles;
 
 public class BoardScene {
 	// framework of board screen
@@ -32,7 +32,7 @@ public class BoardScene {
 	Hyperlink PassOption = new Hyperlink(GeneralConstants.passName);
 	Hyperlink SpecialOption = new Hyperlink(GeneralConstants.specialsName);
 
-	Hyperlink playerName = new Hyperlink("Opponent: Game Bot");
+    static Hyperlink playerName = new Hyperlink("Waiting on opponent...");
 	Hyperlink exitGame = new Hyperlink(GeneralConstants.mainMenuButton);
 
 	// sub panes of center board
@@ -147,11 +147,42 @@ public class BoardScene {
 		PassOption.setOnAction(event -> {
 			alert.setTitle("Message Alert");
 			alert.setHeaderText("The following message was sent from the client");
-			server.sendData("Test");
-			alert.setContentText(server.returnData());
+            alert.setContentText(handleClientData());
 			alert.showAndWait();
 
 		});
 	}
+
+    public static void updateOpponentUsername(String username) {
+        playerName.setText(username);
+
+    }
+
+    public String handleClientData() {
+        String data = server.returnData();
+        String result = "Current data is: " + data + "\n";
+        String dataType = null;
+        String name = null;
+
+        try {
+            dataType = data.substring(data.indexOf("["), data.indexOf("]") + 1);
+            name = data.substring(data.indexOf("]") + 2);
+            result = result + "Player Name is: " + name + "\n";
+
+            result = result + "Data Type is: " + dataType;
+        } catch (NullPointerException e) {
+            result = result + "Invalid Data Type";
+
+        }
+
+        if (dataType.equals("[Username]")) {
+            System.out.println("Username is true");
+            playerName.setText(name);
+
+        }
+
+        return result;
+
+    }
 
 }

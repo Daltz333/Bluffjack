@@ -1,5 +1,6 @@
 package scenes;
 
+import configurations.ConnectionStyles;
 import constants.GeneralConstants;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -8,13 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import sockets.Client;
-import configurations.ConnectionStyles;
 
 public class ConnectionScene {
 
 	// this is the screen that is displayed when the user presses the "Play Game
 	// Button"
-
     Client client = new Client();
 
 	Hyperlink connectionButton = new Hyperlink(GeneralConstants.connectDialogName);
@@ -134,7 +133,7 @@ public class ConnectionScene {
 
             } else {
 		        System.out.println("Already connected to server");
-		        client.sendSocketData("Test");
+				client.sendSocketData("[Username] Yolo Swag");
 		        System.out.println("Server Response: " + client.returnSocketData());
 
             }
