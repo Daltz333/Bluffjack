@@ -1,6 +1,8 @@
 package sockets;
 
 import constants.GeneralConstants;
+import logic.MultiplayerStates;
+import scenes.BoardScene;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,10 +13,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Controller {
 
 	ConcurrentLinkedQueue<String> stringQueue = new ConcurrentLinkedQueue<>();
+	MultiplayerStates ms = new MultiplayerStates();
 
 	public void handleReceivedPacket(String name, BufferedReader in) {
 		try {
-			stringQueue.add(in.readLine());
+			String data = in.readLine();
+			stringQueue.add(data);
+
 			System.out.println("The following data has been added to the queue: " + stringQueue.peek());
 
 		} catch (IOException e) {
@@ -27,5 +32,10 @@ public class Controller {
 		return stringQueue.poll();
 
 	}
+
+	public String peekData() {
+
+	    return stringQueue.peek();
+    }
 
 }

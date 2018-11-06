@@ -46,6 +46,15 @@ public class Client {
 
                 }
 
+                try {
+                    out = new PrintWriter(socket.getOutputStream(), true);
+                    out.println("[Username] " + GeneralConstants.userName);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+
                 while (connected) {
                     if (readFromServer == null) {
                         System.out.println("Connection to server was not established");

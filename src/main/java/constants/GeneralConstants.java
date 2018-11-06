@@ -32,12 +32,14 @@ public class GeneralConstants {
 	public static final int cardWidth = 126;
 	public static final double cardHeight = 204;
 
-	public static final boolean debugEnabled = false;
+	public static final boolean debugEnabled = true;
 
 	public static final double deckHGap = 2;
 
 	// networking constants
 	public static final int applicationPort = 1935;
 	public static final int hostTimeout = 1000; //in millisec
+
+	public static final String userName = "Test User";
 
 }

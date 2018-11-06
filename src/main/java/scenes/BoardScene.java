@@ -9,6 +9,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import logic.GameCard;
+import logic.GameHandler;
 import logic.GameMain;
 import logic.MultiplayerStates;
 import sockets.Server;
@@ -41,6 +42,8 @@ public class BoardScene {
 	GridPane playerRow = new GridPane();
 	GridPane opponentRow = new GridPane();
 
+	GameHandler gameHandler = null;
+
 	Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
 	Server server = new Server();
@@ -49,7 +52,6 @@ public class BoardScene {
 
 		// check if board was previously created, prevent null pointer exception
 		if (mainBoard.getChildren().isEmpty()) {
-
 			server.startHost();
 			// set our styles
 			boardStyles.setBoardStyles(mainBoard);
@@ -75,6 +77,8 @@ public class BoardScene {
 			createOpponentSide(opponentSide);
 
 			setEventHandlers();
+            gameHandler = new GameHandler(server, playerName);
+            gameHandler.updateUI();
 
 			// set right pane to be equal to left pane
 			opponentDeck.setMinWidth(GeneralConstants.cardWidth);
@@ -92,7 +96,7 @@ public class BoardScene {
 
 	private void createDeck(GridPane playerSide) {
 		// creates the "visual" deck on the board, no functional purpose
-		GameCard playerDeck = new GameCard("Deck", 0);
+		GameCard playerDeck = new GameCard("Deck", 0, false);
 
 		playerSide.add(playerDeck.returnGameCardCover(), 0, 0);
 
@@ -104,6 +108,7 @@ public class BoardScene {
 
 		playerRow.setId("playerRow");
 		board.setBottom(playerRow);
+		board.setTop(opponentRow);
 
 	}
 
@@ -143,7 +148,13 @@ public class BoardScene {
 
 		HitMeOption.setOnAction(event -> {
 			//only allow user to hit if turn is theirs
-			gameController.giveCard(playerRow);
+            if (gameHandler != null) {
+                if (gameHandler.getUserConnectedState()) {
+                    gameController.giveCard(playerRow);
+                }
+            } else {
+                System.out.println("Why game handler be null?");
+            }
 
 		});
 

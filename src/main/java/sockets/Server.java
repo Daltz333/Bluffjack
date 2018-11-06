@@ -71,6 +71,11 @@ public class Server {
 		return controller.returnData();
 	}
 
+	public String peekData() {
+
+		return controller.peekData();
+	}
+
 	public boolean sendData(String data) {
 		if (HC == null) {
 			return false;

@@ -1,4 +1,16 @@
-#gameCard {
+#gameCardBack {
+    -fx-background-image: url("/images/game_card_front.png");
+    -fx-height:100;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-font-size: 35;
+    -fx-padding:0;
+    -fx-border-color: transparent;
+    -fx-color: transparent;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 3, 3, 3);
+}
+#gameCardFront {
     -fx-background-image: url("/images/game_card_back.jpg");
     -fx-height:100;
     -fx-background-position: center;
@@ -9,4 +21,32 @@
     -fx-color: transparent;
     -fx-background-color: transparent;
     -fx-effect: dropshadow(three-pass-box, black, 3, 3, 3, 3);
+}
+
+#gameCardFrontOpponent {
+    -fx-background-image: url("/images/game_card_back.jpg");
+    -fx-height:100;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-font-size: 35;
+    -fx-padding:0;
+    -fx-border-color: transparent;
+    -fx-color: transparent;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 3, 3, 3);
+    -fx-rotate: 180;
+}
+
+#gameCardBackOpponent {
+    -fx-background-image: url("/images/game_card_front.png");
+    -fx-height:100;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-font-size: 35;
+    -fx-padding:0;
+    -fx-border-color: transparent;
+    -fx-color: transparent;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 3, 3, 3);
+    -fx-rotate: 180;
 }

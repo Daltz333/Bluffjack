@@ -34,21 +34,40 @@ public class GameMain {
 			int cardOne = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
 			exclusions.add(cardOne);
 
+			int opponentCardOne = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
+			exclusions.add(opponentCardOne);
+
 			int cardTwo = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
 			exclusions.add(cardTwo);
 
+            int opponentCardTwo = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
+            exclusions.add(opponentCardTwo);
+
 			// set first card object to have overlay *temporary*
-			GameCard cardObjectOne = new GameCard(Integer.toString(cardOne), 0);
+			GameCard cardObjectOne = new GameCard(Integer.toString(cardOne), 2, false);
 			ColorAdjust colorAdjust = new ColorAdjust();
 			colorAdjust.setBrightness(-0.2);
 			colorAdjust.setSaturation(0.8);
 			colorAdjust.setHue(-0.05);
 			cardObjectOne.returnGameCardCover().setEffect(colorAdjust);
 
-			GameCard cardObjectTwo = new GameCard(Integer.toString(cardTwo), 0);
+            GameCard cardObjectOneOpponent = new GameCard(Integer.toString(opponentCardOne), 1, true);
+            GameCard cardObjectTwoOpponent = new GameCard(Integer.toString(opponentCardTwo), 0, true);
+
+			GameCard cardObjectTwo = new GameCard(Integer.toString(cardTwo), 0, false);
 
 			playerHand.add(cardObjectOne);
 			playerHand.add(cardObjectTwo);
+
+			opponentHand.add(cardObjectOneOpponent);
+            opponentHand.add(cardObjectTwoOpponent);
+
+			opponentRow.add(cardObjectOneOpponent.returnGameCardCover(), 0, 0);
+            opponentRow.add(cardObjectTwoOpponent.returnGameCardCover(), 1, 0);
+
+            opponentRow.setAlignment(Pos.CENTER);
+            opponentRow.setHgap(GeneralConstants.deckHGap);
+            opponentRow.setGridLinesVisible(GeneralConstants.debugEnabled);
 
 			playerRow.setAlignment(Pos.CENTER);
 			playerRow.setHgap(GeneralConstants.deckHGap);
@@ -75,7 +94,7 @@ public class GameMain {
 
 		// do not proceed if no cards left in deck
 		if (!(cardInt == -1)) {
-			GameCard cardObjectTwo = new GameCard(Integer.toString(cardInt), 0);
+			GameCard cardObjectTwo = new GameCard(Integer.toString(cardInt), 0, false);
 			this.exclusions.add(cardInt);
 
 			boolean exit = false;
@@ -111,6 +130,10 @@ public class GameMain {
 		givenInitialCards = false;
 
 		playerRow.getChildren().clear();
+
+	}
+
+	public void giveInitialCardClient() {
 
 	}
 

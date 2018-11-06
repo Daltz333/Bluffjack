@@ -16,15 +16,35 @@ public class GameCard extends Region {
 	private String stylesheet = getClass().getClassLoader().getResource("css/CardStyles.css").toExternalForm();
 
 	// card constructor
-	public GameCard(String cardNum, int cardType) {
+	public GameCard(String cardNum, int cardType, boolean opponent) {
 		this.value = cardNum;
 
-		imageButton = new Button(cardNum);
+		if (cardType == 1) {
+			imageButton = new Button();
+			if (opponent) {
+				imageButton.setId("gameCardFrontOpponent");
+			} else {
+				imageButton.setId("gameCardFront");
+			}
+		} else if (cardType == 2) {
+			imageButton = new Button(cardNum);
+			if (opponent) {
+				imageButton.setId("gameCardFrontOpponent");
+			} else {
+				imageButton.setId("gameCardFront");
+			}
+		} else {
+			imageButton = new Button(cardNum);
+			if (opponent) {
+				imageButton.setId("gameCardBackOpponent");
+			} else {
+				imageButton.setId("gameCardBack");
+			}
+		}
 
 		imageButton.getStylesheets().add(stylesheet);
 
 		imageButton.setPrefSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
-		imageButton.setId("gameCard");
 	}
 
 	public Button returnGameCardCover() {
@@ -37,7 +57,7 @@ public class GameCard extends Region {
 
 		// create our array of game cards
 		for (int i = 0; i < 12; i++) {
-			cardArray.add(new GameCard(String.valueOf(i), 0));
+			cardArray.add(new GameCard(String.valueOf(i), 0, false));
 		}
 
 		return cardArray;

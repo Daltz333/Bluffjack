@@ -14,7 +14,7 @@ public class MultiplayerStates {
 
         try {
             dataType = data.substring(data.indexOf("["), data.indexOf("]") + 1);
-            dataContent = data.substring(data.indexOf("]") + 2);;
+            dataContent = data.substring(data.indexOf("]") + 2);
 
             result = result + "Data Type is: " + dataType;
         } catch (NullPointerException e) {

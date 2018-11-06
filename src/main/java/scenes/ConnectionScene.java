@@ -133,7 +133,7 @@ public class ConnectionScene {
 
             } else {
 		        System.out.println("Already connected to server");
-				client.sendSocketData("[Username] Yolo Swag");
+				//client.sendSocketData("[Username] Yolo Swag");
 		        System.out.println("Server Response: " + client.returnSocketData());
 
             }
