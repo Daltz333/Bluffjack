@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import logic.GameCard;
 import logic.GameMain;
+import logic.MultiplayerStates;
 import sockets.Server;
 
 public class BoardScene {
@@ -24,6 +25,7 @@ public class BoardScene {
 	BoardStyles boardStyles = new BoardStyles();
 
 	SceneController sceneController = new SceneController();
+	MultiplayerStates multiplayerStates = new MultiplayerStates();
 
 	GameMain gameController = new GameMain();
 
@@ -140,48 +142,21 @@ public class BoardScene {
 		});
 
 		HitMeOption.setOnAction(event -> {
+			//only allow user to hit if turn is theirs
 			gameController.giveCard(playerRow);
 
 		});
 
 		PassOption.setOnAction(event -> {
 			alert.setTitle("Message Alert");
-			alert.setHeaderText("The following message was sent from the client");
-            alert.setContentText(handleClientData());
+			multiplayerStates.handleClientData(server.returnData());
 			alert.showAndWait();
 
 		});
 	}
 
     public static void updateOpponentUsername(String username) {
-        playerName.setText(username);
-
-    }
-
-    public String handleClientData() {
-        String data = server.returnData();
-        String result = "Current data is: " + data + "\n";
-        String dataType = null;
-        String name = null;
-
-        try {
-            dataType = data.substring(data.indexOf("["), data.indexOf("]") + 1);
-            name = data.substring(data.indexOf("]") + 2);
-            result = result + "Player Name is: " + name + "\n";
-
-            result = result + "Data Type is: " + dataType;
-        } catch (NullPointerException e) {
-            result = result + "Invalid Data Type";
-
-        }
-
-        if (dataType.equals("[Username]")) {
-            System.out.println("Username is true");
-            playerName.setText(name);
-
-        }
-
-        return result;
+		playerName.setText(username);
 
     }
 
