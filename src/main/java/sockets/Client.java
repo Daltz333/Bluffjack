@@ -128,11 +128,13 @@ public class Client {
 
     }
 
+    //check if the client is connected
     public synchronized boolean clientActive() {
 
         return connected;
     }
 
+    //stop our client
     public synchronized void stopClient() {
         forceStop = true;
         connected = false;
