@@ -24,6 +24,8 @@ public class BoardScene {
 	GridPane playerDeck = new GridPane();
 	GridPane opponentDeck = new GridPane();
 
+	static Boolean isTurnMine = false;
+
 	BoardStyles boardStyles = new BoardStyles();
 
 	SceneController sceneController = new SceneController();
@@ -49,7 +51,15 @@ public class BoardScene {
 
 	Server server = new Server();
 
-	public void setMainBoard(GridPane root, boolean isClient, Client client) {
+	static Boolean isClient = false;
+
+	Client client = null;
+
+	public void setMainBoard(GridPane root, boolean isClientInput, Client client) {
+
+	    isClient = isClientInput;
+
+	    this.client = client;
 
 		// check if board was previously created, prevent null pointer exception
 		if (mainBoard.getChildren().isEmpty()) {
@@ -88,6 +98,7 @@ public class BoardScene {
 			if (!isClient) {
                 gameHandler = new GameHandler(server, playerName, gameController, null);
                 gameHandler.updateUI();
+                isTurnMine = true;
             } else {
                 gameHandler = new GameHandler(server, playerName, gameController, client);
                 gameHandler.updateGameBoard(playerRow, opponentRow);
@@ -97,6 +108,7 @@ public class BoardScene {
                 playerRow.setAlignment(Pos.CENTER);
                 board.setTop(opponentRow);
                 opponentRow.setAlignment(Pos.CENTER);
+                isTurnMine = false;
             }
 
 			// set right pane to be equal to left pane
@@ -169,7 +181,9 @@ public class BoardScene {
 			//only allow user to hit if turn is theirs
             if (gameHandler != null) {
                 if (gameHandler.getUserConnectedState()) {
-                    gameController.giveCard(playerRow);
+                    if (isTurnMine) {
+                        gameController.giveCard(playerRow);
+                    }
                 }
             } else {
                 System.out.println("Why game handler be null?");
@@ -178,9 +192,23 @@ public class BoardScene {
 		});
 
 		PassOption.setOnAction(event -> {
-			alert.setTitle("Message Alert");
-			multiplayerStates.handleClientData(server.returnData());
-			alert.showAndWait();
+			System.out.println("Pass Button Pressed");
+			if (isTurnMine) {
+			    isTurnMine = false;
+                if (!isClient) {
+                    System.out.println("Sent data to client");
+                    server.sendData("[TurnComplete] ");
+                    gameHandler.listenForTurnCompletitionClient();
+                } else {
+                    System.out.println("Sent data to server");
+                    client.sendSocketData("[TurnComplete] ");
+                    gameHandler.listenForTurnCompletitionServer();
+                }
+
+            } else {
+			    //do nothing cuz turn is not urs
+
+            }
 
 		});
 	}
@@ -188,6 +216,10 @@ public class BoardScene {
     public static void updateOpponentUsername(String username) {
 		playerName.setText(username);
 
+    }
+
+    public static void updateTurnState(boolean state) {
+	    isTurnMine = state;
     }
 
 }

@@ -140,6 +140,77 @@ public class GameHandler{
         task.setOnSucceeded(e -> {
             userConnected = true;
             generateClientScreen(playerRow, opponentRow);
+            listenForTurnCompletitionServer();
+
+        });
+
+        Thread t = new Thread(task);
+        t.setDaemon(true);
+        t.start();
+    }
+
+    @SuppressWarnings("Duplicates")
+    public void listenForTurnCompletitionServer() {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                while(true) {
+                    String data = client.peekData();
+                    if (data != null) {
+                        String dataType = data.substring(data.indexOf("["), data.indexOf("]") + 1);
+                        String dataContent = data.substring(data.indexOf("]") + 2);
+
+                        if (dataType.equals("[TurnComplete]")) {
+                            client.returnSocketData(); //remove the data instead of just peeking at it
+                            break;
+                        }
+
+                    }
+
+                }
+
+                return null;
+            }
+        };
+
+        task.setOnSucceeded(e -> {
+            userConnected = true;
+            BoardScene.updateTurnState(true);
+
+        });
+
+        Thread t = new Thread(task);
+        t.setDaemon(true);
+        t.start();
+    }
+
+    @SuppressWarnings("Duplicates")
+    public void listenForTurnCompletitionClient() {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                while(true) {
+                    String data = server.peekData();
+                    if (data != null) {
+                        String dataType = data.substring(data.indexOf("["), data.indexOf("]") + 1);
+                        String dataContent = data.substring(data.indexOf("]") + 2);
+
+                        if (dataType.equals("[TurnComplete]")) {
+                            server.returnData(); //remove the data instead of just peeking at it
+                            break;
+                        }
+
+                    }
+
+                }
+
+                return null;
+            }
+        };
+
+        task.setOnSucceeded(e -> {
+            userConnected = true;
+            BoardScene.updateTurnState(true);
 
         });
 

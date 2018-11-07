@@ -90,16 +90,6 @@ public class Server {
 
     }
 
-    public boolean sendData(ArrayList<GameCard> data) {
-        if (HC == null) {
-            return false;
-
-        } else {
-            return HC.sendData(data);
-
-        }
-    }
-
     public void stopHost() {
 	    System.out.println("Stopping Host");
 	    isConnected = false;

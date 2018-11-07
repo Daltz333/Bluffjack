@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4abddb92-c2ab-48fc-b193-4af41d55c9fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/GameCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/GameCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/GameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/GameMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sockets/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sockets/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sockets/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sockets/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -47,69 +49,73 @@
     <session id="640535268">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="3" />
-          <entry key="java" value="54" />
+          <entry key="java" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="JAVA" value="54" />
+          <entry key="JAVA" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="282" />
-          <entry key="java" value="10948" />
-          <entry key="txt" value="195" />
+          <entry key="java" value="11694" />
+          <entry key="txt" value="218" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="282" />
-          <entry key="JAVA" value="10948" />
-          <entry key="PLAIN_TEXT" value="195" />
+          <entry key="JAVA" value="11694" />
+          <entry key="PLAIN_TEXT" value="218" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-33">
-              <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+            <state relative-caret-position="171">
+              <caret line="204" column="66" selection-start-line="204" selection-start-column="66" selection-end-line="204" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5831#5832#0" expanded="true" />
+                <element signature="e#5862#5863#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sockets/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-450">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#4054#4055#0" expanded="true" />
-                <element signature="e#4084#4085#0" expanded="true" />
-                <element signature="e#4136#4137#0" expanded="true" />
-                <element signature="e#4168#4169#0" expanded="true" />
-                <element signature="e#4211#4212#0" expanded="true" />
-                <element signature="e#4237#4238#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1159">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -117,12 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sockets/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-              <folding>
-                <element signature="e#4335#4336#0" expanded="true" />
-                <element signature="e#4369#4370#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2047">
+              <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -130,11 +132,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2760">
-              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="2543">
+              <caret line="197" column="48" selection-start-line="197" selection-start-column="48" selection-end-line="197" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3061#3092#0" expanded="true" />
+                <element signature="e#3441#4595#0" expanded="true" />
+                <element signature="e#4594#4595#0" expanded="true" />
+                <element signature="e#4880#4911#0" expanded="true" />
+                <element signature="e#4990#5713#0" expanded="true" />
+                <element signature="e#5712#5713#0" expanded="true" />
+                <element signature="e#5939#5970#0" expanded="true" />
+                <element signature="e#6049#6772#0" expanded="true" />
+                <element signature="e#6771#6772#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,7 +171,6 @@
     <findStrings>
       <find>createOppon</find>
       <find>Bot</find>
-      <find>server</find>
       <find>opponentDeck</find>
       <find>playerDeck</find>
       <find>gameMain</find>
@@ -172,8 +180,10 @@
       <find>playerSide</find>
       <find>opponentSide</find>
       <find>board</find>
-      <find>client</find>
       <find>ipbox</find>
+      <find>isClient</find>
+      <find>client</find>
+      <find>server</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\daltz\IdeaProjects\Bluffjack\src\main\java\sockets</dir>
@@ -390,7 +400,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6166112138184" />
+        <entry key="$PROJECT_DIR$" value="6166147250054" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="2414328441" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2585518924" />
@@ -589,13 +599,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/css/ConnectionStyles.css" />
         <option value="$PROJECT_DIR$/src/main/java/constants/GeneralConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/scenes/ConnectionScene.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sockets/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/sockets/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/sockets/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/GameCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/GameMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sockets/Server.java" />
+        <option value="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" />
       </list>
     </option>
   </component>
@@ -706,7 +716,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541556266542" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541556822914" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -747,6 +757,7 @@
       <workItem from="1541528148601" duration="351000" />
       <workItem from="1541529603351" duration="5001000" />
       <workItem from="1541537142082" duration="424000" />
+      <workItem from="1541599974482" duration="2332000" />
     </task>
     <task id="LOCAL-00001" summary="Only allow user to get card if turn is theirs">
       <created>1541535088153</created>
@@ -783,17 +794,24 @@
       <option name="project" value="LOCAL" />
       <updated>1541556078537</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="kinda cleaned things up">
+      <created>1541556276201</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1541556276201</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26072000" />
+    <option name="totallyTimeSpent" value="29008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2579425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -802,7 +820,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49924356" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.32718122" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.40939596" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -869,14 +887,15 @@
     <MESSAGE value="client gameboard created" />
     <MESSAGE value="client exclusions are set properly" />
     <MESSAGE value="more comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="more comments" />
+    <MESSAGE value="kinda cleaned things up" />
+    <option name="LAST_COMMIT_MESSAGE" value="kinda cleaned things up" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java</url>
-          <line>192</line>
+          <line>224</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -891,9 +910,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sockets/ThreadedUsername.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sockets/ThreadedUsername.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -966,39 +983,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sockets/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sockets/ClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="86" column="88" lean-forward="true" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2760">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3061#3092#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sockets/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-          <folding>
-            <element signature="e#4335#4336#0" expanded="true" />
-            <element signature="e#4369#4370#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,27 +997,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+        <state relative-caret-position="2543">
+          <caret line="197" column="48" selection-start-line="197" selection-start-column="48" selection-end-line="197" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3441#4595#0" expanded="true" />
+            <element signature="e#4594#4595#0" expanded="true" />
+            <element signature="e#4880#4911#0" expanded="true" />
+            <element signature="e#4990#5713#0" expanded="true" />
+            <element signature="e#5712#5713#0" expanded="true" />
+            <element signature="e#5939#5970#0" expanded="true" />
+            <element signature="e#6049#6772#0" expanded="true" />
+            <element signature="e#6771#6772#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sockets/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2047">
+          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="-1159">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sockets/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="204" column="66" selection-start-line="204" selection-start-column="66" selection-end-line="204" selection-end-column="66" />
           <folding>
-            <element signature="e#4054#4055#0" expanded="true" />
-            <element signature="e#4084#4085#0" expanded="true" />
-            <element signature="e#4136#4137#0" expanded="true" />
-            <element signature="e#4168#4169#0" expanded="true" />
-            <element signature="e#4211#4212#0" expanded="true" />
-            <element signature="e#4237#4238#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#5831#5832#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
