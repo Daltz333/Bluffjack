@@ -19,7 +19,11 @@ public class Server {
 
 	Socket client;
 
+	Boolean amHost = false;
+
 	public void startHost() {
+		amHost = true;
+
 		Thread host = new Thread(() -> {
 			try {
 				server = new ServerSocket(GeneralConstants.applicationPort);
@@ -128,6 +132,10 @@ public class Server {
 
         }
 
+    }
+
+    public boolean amHost() {
+	    return amHost;
 
     }
 }

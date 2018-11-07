@@ -31,7 +31,7 @@ public class BoardScene {
 	SceneController sceneController = new SceneController();
 	MultiplayerStates multiplayerStates = new MultiplayerStates();
 
-	GameMain gameController = new GameMain();
+	GameMain gameController = null;
 
 	// buttons
 	Hyperlink HitMeOption = new Hyperlink(GeneralConstants.hitMeName);
@@ -54,9 +54,11 @@ public class BoardScene {
 	static Boolean isClient = false;
 
 	Client client = null;
+	GameMain getGameController = null;
 
 	public void setMainBoard(GridPane root, boolean isClientInput, Client client) {
 
+        gameController = new GameMain(server, client);
 	    isClient = isClientInput;
 
 	    this.client = client;
@@ -67,6 +69,7 @@ public class BoardScene {
 		    if (!isClient) {
                 server.startHost();
             }
+
 			// set our styles
 			boardStyles.setBoardStyles(mainBoard);
 			mainBoard.setId("mainBoard");
@@ -96,11 +99,12 @@ public class BoardScene {
 			setEventHandlers();
 
 			if (!isClient) {
-                gameHandler = new GameHandler(server, playerName, gameController, null);
+                gameHandler = new GameHandler(server, playerName, gameController, null, playerRow, opponentRow);
                 gameHandler.updateUI();
+                gameHandler.listenForClientCards();
                 isTurnMine = true;
             } else {
-                gameHandler = new GameHandler(server, playerName, gameController, client);
+                gameHandler = new GameHandler(server, playerName, gameController, client, playerRow, opponentRow);
                 gameHandler.updateGameBoard(playerRow, opponentRow);
                 gameHandler.updateClientUI();
 

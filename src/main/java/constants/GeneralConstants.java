@@ -38,7 +38,7 @@ public class GeneralConstants {
 
 	// networking constants
 	public static final int applicationPort = 1935;
-	public static final int hostTimeout = 1000; //in millisec
+	public static final int hostTimeout = 30; //in millisec
 
 	public static String userName = "Test User";
 

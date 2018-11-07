@@ -151,6 +151,7 @@ public class Client {
     }
 
     public boolean sendSocketData(String data) {
+        System.out.println("Sending: " +data);
         if (socket == null) {
             return false;
 

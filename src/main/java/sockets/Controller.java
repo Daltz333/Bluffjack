@@ -23,7 +23,6 @@ public class Controller {
 			String data = in.readLine();
 
 			stringQueue.add(data);
-
 			System.out.println("The following data has been added to the queue: " + stringQueue.peek());
 
 		} catch (IOException e) {

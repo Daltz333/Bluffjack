@@ -8,6 +8,7 @@ import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import sockets.Client;
 import sockets.Server;
 
 import java.io.IOException;
@@ -25,6 +26,14 @@ public class GameMain {
 	private ArrayList<GameCard> opponentHand = new ArrayList<GameCard>();
 
 	// Server serverConnection = new Server();
+    Server server = null;
+    Client client = null;
+
+	public GameMain(Server server, Client client) {
+        this.server = server;
+        this.client = client;
+
+	}
 
 	public void startGame(GridPane playerRow, GridPane opponentRow) {
 		// close when application closes
@@ -83,6 +92,8 @@ public class GameMain {
 
     }
 
+
+    @SuppressWarnings("Duplicates")
 	// logic to displaying card in specified row
 	public void giveCard(GridPane playerRow) {
 		int cardInt = Utilities.getRandomWithExclusion(rand, 1, 11, exclusions);
@@ -94,6 +105,12 @@ public class GameMain {
 		if (!(cardInt == -1)) {
 			GameCard cardObjectTwo = new GameCard(Integer.toString(cardInt), 0, false);
 			this.exclusions.add(cardInt);
+
+			if (server.amHost()) {
+                server.sendData("[NewCard] " + cardInt);
+            } else {
+			    client.sendSocketData("[NewCard] " + cardInt);
+            }
 
 			boolean exit = false;
 			int i = 0;
@@ -119,6 +136,31 @@ public class GameMain {
 		}
 
 	}
+
+    @SuppressWarnings("Duplicates")
+	public void addCard(GridPane playerRow, GridPane opponentRow, int card, boolean isServer) {
+	    boolean exit = false;
+	    int i = 0;
+
+        while (!exit) {
+            try {
+                opponentRow.getChildren().get(i);
+                // do nothing
+            } catch (Exception e) {
+                System.out.println("Empty Index is: " + i);
+                exit = true;
+                break;
+            }
+            i++;
+        }
+
+        exclusions.add(card);
+        GameCard gameCard = new GameCard(Integer.toString(card), 0, true);
+        opponentHand.add(gameCard);
+        opponentRow.add(gameCard.returnGameCardCover(), i, 0);
+
+    }
+
 
 	public void stopGame(GridPane playerRow) {
 		exclusions.clear();
