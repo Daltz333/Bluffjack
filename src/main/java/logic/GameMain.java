@@ -145,4 +145,8 @@ public class GameMain {
 	    return opponentHand;
     }
 
+    public void setExclusions(int exclusion) {
+	    exclusions.add(exclusion);
+    }
+
 }

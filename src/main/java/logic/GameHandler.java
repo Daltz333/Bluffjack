@@ -174,6 +174,10 @@ public class GameHandler{
         playerRow.add(playerCardOne.returnGameCardCover(), 0, 0);
         playerRow.add(playerCardTwo.returnGameCardCover(), 1, 0);
 
+        gameController.setExclusions(Integer.valueOf(clientCards[0]));
+        gameController.setExclusions(Integer.valueOf(clientCards[1]));
+        gameController.setExclusions(Integer.valueOf(serverCards[0]));
+        gameController.setExclusions(Integer.valueOf(serverCards[1]));
 
     }
 

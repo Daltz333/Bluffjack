@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4abddb92-c2ab-48fc-b193-4af41d55c9fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/constants/GeneralConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/GeneralConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/GameCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/GameCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/GameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/GameMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/ConnectionScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/ConnectionScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/SceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sockets/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sockets/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sockets/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sockets/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sockets/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sockets/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sockets/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sockets/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/ConnectionStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/ConnectionStyles.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -78,26 +68,26 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="282" />
-          <entry key="java" value="10428" />
-          <entry key="txt" value="104" />
+          <entry key="java" value="10571" />
+          <entry key="txt" value="140" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="282" />
-          <entry key="JAVA" value="10428" />
-          <entry key="PLAIN_TEXT" value="104" />
+          <entry key="JAVA" value="10571" />
+          <entry key="PLAIN_TEXT" value="140" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="-33">
+              <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,11 +98,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-815">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="220">
+              <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
               <folding>
+                <element signature="e#4054#4055#0" expanded="true" />
+                <element signature="e#4084#4085#0" expanded="true" />
                 <element signature="e#4136#4137#0" expanded="true" />
                 <element signature="e#4168#4169#0" expanded="true" />
+                <element signature="e#4211#4212#0" expanded="true" />
+                <element signature="e#4237#4238#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="139" column="55" selection-start-line="139" selection-start-column="55" selection-end-line="139" selection-end-column="55" />
+            <state relative-caret-position="151">
+              <caret line="178" column="70" lean-forward="true" selection-start-line="178" selection-start-column="70" selection-end-line="178" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3061#3092#0" expanded="true" />
@@ -147,7 +141,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
+            <state relative-caret-position="322">
               <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
             </state>
           </provider>
@@ -588,7 +582,6 @@
         <option value="$PROJECT_DIR$/src/main/java/sockets/ThreadedUsername.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/MultiplayerStates.java" />
         <option value="$PROJECT_DIR$/src/main/resources/css/CardStyles.css" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/GameMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/sockets/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/scenes/SceneController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/css/ConnectionStyles.css" />
@@ -598,8 +591,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sockets/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/sockets/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/GameCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/scenes/BoardScene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/GameMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/GameHandler.java" />
       </list>
     </option>
   </component>
@@ -710,7 +704,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541555183715" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541555896131" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -766,11 +760,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541546676952</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="client gameboard created">
+      <created>1541555211631</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1541555211631</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24990000" />
+    <option name="totallyTimeSpent" value="25694000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -849,7 +850,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Only allow user to get card if turn is theirs" />
     <MESSAGE value="Reworked the board a lil bit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked the board a lil bit." />
+    <MESSAGE value="client gameboard created" />
+    <option name="LAST_COMMIT_MESSAGE" value="client gameboard created" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -960,20 +962,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameCard.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-815">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="-33">
+          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
           <folding>
-            <element signature="e#4136#4137#0" expanded="true" />
-            <element signature="e#4168#4169#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -989,23 +983,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="139" column="55" selection-start-line="139" selection-start-column="55" selection-end-line="139" selection-end-column="55" />
+        <state relative-caret-position="322">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3061#3092#0" expanded="true" />
+            <element signature="e#4054#4055#0" expanded="true" />
+            <element signature="e#4084#4085#0" expanded="true" />
+            <element signature="e#4136#4137#0" expanded="true" />
+            <element signature="e#4168#4169#0" expanded="true" />
+            <element signature="e#4211#4212#0" expanded="true" />
+            <element signature="e#4237#4238#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/BoardScene.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/GameHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+        <state relative-caret-position="151">
+          <caret line="178" column="70" lean-forward="true" selection-start-line="178" selection-start-column="70" selection-end-line="178" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3061#3092#0" expanded="true" />
           </folding>
         </state>
       </provider>
