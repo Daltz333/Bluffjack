@@ -10,11 +10,9 @@ import java.util.ArrayList;
 public class GameCard extends Region {
 
 	ImageView coverImage;
-	Button imageButton;
+	private Button imageButton;
 	String value;
-	boolean opponent;
-
-	private String stylesheet = getClass().getClassLoader().getResource("css/CardStyles.css").toExternalForm();
+	private boolean opponent;
 
 	// card constructor
 	public GameCard(String cardNum, int cardType, boolean opponent) {
@@ -46,6 +44,7 @@ public class GameCard extends Region {
 			}
 		}
 
+		String stylesheet = getClass().getClassLoader().getResource("css/CardStyles.css").toExternalForm();
 		imageButton.getStylesheets().add(stylesheet);
 
 		imageButton.setPrefSize(GeneralConstants.cardWidth, GeneralConstants.cardHeight);
@@ -56,7 +55,7 @@ public class GameCard extends Region {
 
 	}
 
-	public static ArrayList<GameCard> generateGameDeck() {
+	static ArrayList<GameCard> generateGameDeck() {
 		ArrayList<GameCard> cardArray = new ArrayList<>();
 
 		// create our array of game cards

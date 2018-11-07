@@ -79,11 +79,9 @@ public class GameMain {
 
 			givenInitialCards = true;
 
-		} else {
-
 		}
 
-	}
+    }
 
 	// logic to displaying card in specified row
 	public void giveCard(GridPane playerRow) {
@@ -137,15 +135,15 @@ public class GameMain {
 
 	}
 
-	public ArrayList<GameCard> getServerCards() {
+	ArrayList<GameCard> getServerCards() {
 	    return playerHand;
     }
 
-    public ArrayList<GameCard> getOpponentHand() {
+    ArrayList<GameCard> getOpponentHand() {
 	    return opponentHand;
     }
 
-    public void setExclusions(int exclusion) {
+    void setExclusions(int exclusion) {
 	    exclusions.add(exclusion);
     }
 

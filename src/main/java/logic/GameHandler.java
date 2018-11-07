@@ -12,15 +12,15 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GameHandler{
-    Boolean userConnected = false;
-    Server server = null;
-    Hyperlink userName = null;
+    private Boolean userConnected = false;
+    private Server server = null;
+    private Hyperlink userName = null;
     String test = "Yolo";
-    AtomicReference<String> updatedName = new AtomicReference<>();
-    AtomicReference<String> serverInitCards = new AtomicReference<>();
-    AtomicReference<String> clientInitCards = new AtomicReference<>();
-    GameMain gameController = null;
-    Client client = null;
+    private AtomicReference<String> updatedName = new AtomicReference<>();
+    private AtomicReference<String> serverInitCards = new AtomicReference<>();
+    private AtomicReference<String> clientInitCards = new AtomicReference<>();
+    private GameMain gameController = null;
+    private Client client = null;
 
     public GameHandler(Server server, Hyperlink userName, GameMain gameController, Client client) {
         this.server = server;

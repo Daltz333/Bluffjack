@@ -34,7 +34,7 @@ public class Client {
                     connected = true;
                     System.out.println("Connected to host: " + socket.getInetAddress());
 
-                    if (forceStop == true) {
+                    if (forceStop) {
                         forceStop = false;
                         break;
                     }
@@ -135,7 +135,7 @@ public class Client {
     }
 
     //stop our client
-    public synchronized void stopClient() {
+    private synchronized void stopClient() {
         forceStop = true;
         connected = false;
 
