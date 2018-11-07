@@ -12,14 +12,17 @@ public class GameCard extends Region {
 	ImageView coverImage;
 	Button imageButton;
 	String value;
+	boolean opponent;
 
 	private String stylesheet = getClass().getClassLoader().getResource("css/CardStyles.css").toExternalForm();
 
 	// card constructor
 	public GameCard(String cardNum, int cardType, boolean opponent) {
 		this.value = cardNum;
+		this.opponent = opponent;
 
 		if (cardType == 1) {
+			//front of card, blank
 			imageButton = new Button();
 			if (opponent) {
 				imageButton.setId("gameCardFrontOpponent");
@@ -27,6 +30,7 @@ public class GameCard extends Region {
 				imageButton.setId("gameCardFront");
 			}
 		} else if (cardType == 2) {
+			//front of card with number, for player
 			imageButton = new Button(cardNum);
 			if (opponent) {
 				imageButton.setId("gameCardFrontOpponent");

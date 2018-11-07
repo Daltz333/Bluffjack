@@ -8,6 +8,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import sockets.Client;
 
 public class ConnectionScene {
@@ -26,7 +28,10 @@ public class ConnectionScene {
 
 	ConnectionStyles connectionStyles = new ConnectionStyles();
 
+	Text userNameText = new Text("Username:");
+	Text ipBoxText = new Text("Host IP:");
 	TextField ipBox = new TextField();
+	TextField userName = new TextField();
 	Hyperlink confirmationButton = new Hyperlink(GeneralConstants.connectDialogName);
 	Hyperlink returnButton = new Hyperlink(GeneralConstants.returnButtonName);
 
@@ -97,6 +102,11 @@ public class ConnectionScene {
 
 		titleLabel.setId("titleLabel");
 		ipBox.setId("ipBox");
+		userName.setId("ipBox");
+		ipBoxText.setId("labelText");
+		ipBoxText.setFill(Color.WHITE); //css no work for some reason
+		userNameText.setId("labelText");
+		userNameText.setFill(Color.WHITE);
 		confirmationButton.setId("ipButton");
 		sceneRoot.setId("sceneRoot");
 		returnButton.setId("ipButton");
@@ -116,7 +126,10 @@ public class ConnectionScene {
 		// dialog.setGridLinesVisible(true);
 
 		topDialog.add(titleLabel, 0, 0);
-		topDialog.add(ipBox, 0, 1);
+		topDialog.add(ipBoxText, 0, 1);
+		topDialog.add(ipBox, 0, 2);
+		topDialog.add(userNameText, 0, 3);
+		topDialog.add(userName, 0, 4);
 		dialog.add(confirmationButton, 0, 0);
 		dialog.add(returnButton, 1, 0);
 		dialog.setAlignment(Pos.CENTER);
@@ -129,12 +142,14 @@ public class ConnectionScene {
 		confirmationButton.setOnAction(event -> {
 		    if (!client.clientActive()) {
 		        System.out.println("Connecting to server");
+		        GeneralConstants.userName = userName.getText();
                 client.connectToHost(ipBox.getText());
+				sceneController.passClient(client);
+				sceneController.setScene(4);
 
             } else {
-		        System.out.println("Already connected to server");
-				//client.sendSocketData("[Username] Yolo Swag");
-		        System.out.println("Server Response: " + client.returnSocketData());
+
+		        //System.out.println("Server Response: " + client.returnSocketData());
 
             }
 

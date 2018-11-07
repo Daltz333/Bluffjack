@@ -40,6 +40,6 @@ public class GeneralConstants {
 	public static final int applicationPort = 1935;
 	public static final int hostTimeout = 1000; //in millisec
 
-	public static final String userName = "Test User";
+	public static String userName = "Test User";
 
 }

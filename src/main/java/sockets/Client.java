@@ -64,7 +64,9 @@ public class Client {
 
                     try {
                         if (readFromServer.ready()) {
-                            receiveQueue.add(readFromServer.readLine());
+                            String data = readFromServer.readLine();
+                            System.out.println("Client Received: " + data);
+                            receiveQueue.add(data);
 
                             if (!readFromServer.ready()) {
                                 System.out.println("No more data detected");
@@ -78,6 +80,7 @@ public class Client {
                                 connected = false;
 
                             } else {
+                                System.out.println("Client Received: " + data);
                                 receiveQueue.add(data);
 
                             }
@@ -139,6 +142,10 @@ public class Client {
     public synchronized String returnSocketData() {
         return receiveQueue.poll();
 
+    }
+
+    public synchronized String peekData() {
+        return receiveQueue.peek();
     }
 
     public boolean sendSocketData(String data) {

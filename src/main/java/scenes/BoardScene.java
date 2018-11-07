@@ -12,6 +12,7 @@ import logic.GameCard;
 import logic.GameHandler;
 import logic.GameMain;
 import logic.MultiplayerStates;
+import sockets.Client;
 import sockets.Server;
 
 public class BoardScene {
@@ -48,11 +49,14 @@ public class BoardScene {
 
 	Server server = new Server();
 
-	public void setMainBoard(GridPane root) {
+	public void setMainBoard(GridPane root, boolean isClient, Client client) {
 
 		// check if board was previously created, prevent null pointer exception
 		if (mainBoard.getChildren().isEmpty()) {
-			server.startHost();
+
+		    if (!isClient) {
+                server.startHost();
+            }
 			// set our styles
 			boardStyles.setBoardStyles(mainBoard);
 			mainBoard.setId("mainBoard");
@@ -71,14 +75,29 @@ public class BoardScene {
 			mainBoard.setRight(opponentDeck);
 
 			// create board
-			createCenter(board);
+            if (!isClient) {
+                createCenter(board);
+            }
+
 			createDeck(playerDeck);
 			createPlayerSide(playerSide);
 			createOpponentSide(opponentSide);
 
 			setEventHandlers();
-            gameHandler = new GameHandler(server, playerName);
-            gameHandler.updateUI();
+
+			if (!isClient) {
+                gameHandler = new GameHandler(server, playerName, gameController, null);
+                gameHandler.updateUI();
+            } else {
+                gameHandler = new GameHandler(server, playerName, gameController, client);
+                gameHandler.updateGameBoard(playerRow, opponentRow);
+                gameHandler.updateClientUI();
+
+                board.setBottom(playerRow);
+                playerRow.setAlignment(Pos.CENTER);
+                board.setTop(opponentRow);
+                opponentRow.setAlignment(Pos.CENTER);
+            }
 
 			// set right pane to be equal to left pane
 			opponentDeck.setMinWidth(GeneralConstants.cardWidth);

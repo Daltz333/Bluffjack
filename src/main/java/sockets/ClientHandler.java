@@ -1,9 +1,11 @@
 package sockets;
 
 import constants.GeneralConstants;
+import logic.GameCard;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class ClientHandler {
@@ -58,6 +60,7 @@ public class ClientHandler {
 		}
 	}
 
+	@SuppressWarnings("Duplicates")
 	public boolean sendData(String data) {
         try {
         	if(!(clientSocket == null)) {
@@ -76,6 +79,26 @@ public class ClientHandler {
 
         }
     }
+
+    @SuppressWarnings("Duplicates")
+	public boolean sendData(ArrayList<GameCard> data) {
+		try {
+			if (!(clientSocket == null)) {
+				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+				out.println(data);
+				return true;
+
+			} else {
+				return false;
+
+			}
+
+		} catch (IOException e) {
+			System.out.println("Unable to create output stream to client");
+			return false;
+
+		}
+	}
 
 	public void close() {
 		connected = false;

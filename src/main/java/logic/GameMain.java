@@ -137,4 +137,12 @@ public class GameMain {
 
 	}
 
+	public ArrayList<GameCard> getServerCards() {
+	    return playerHand;
+    }
+
+    public ArrayList<GameCard> getOpponentHand() {
+	    return opponentHand;
+    }
+
 }

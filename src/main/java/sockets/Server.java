@@ -1,11 +1,13 @@
 package sockets;
 
 import constants.GeneralConstants;
+import logic.GameCard;
 
 import java.io.IOException;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Server {
 
@@ -46,6 +48,7 @@ public class Server {
 						HC = new ClientHandler("client", client, controller);
 						isConnected = true;
 						System.out.println("Client Connected: " + isConnected);
+						HC.sendData("[Username] " + GeneralConstants.userName);
 						HC.receive();
 
 					} else {
@@ -85,6 +88,16 @@ public class Server {
 
 		}
 
+    }
+
+    public boolean sendData(ArrayList<GameCard> data) {
+        if (HC == null) {
+            return false;
+
+        } else {
+            return HC.sendData(data);
+
+        }
     }
 
     public void stopHost() {

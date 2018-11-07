@@ -1,6 +1,7 @@
 package sockets;
 
 import constants.GeneralConstants;
+import logic.GameCard;
 import logic.MultiplayerStates;
 import scenes.BoardScene;
 
@@ -13,11 +14,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Controller {
 
 	ConcurrentLinkedQueue<String> stringQueue = new ConcurrentLinkedQueue<>();
+	ConcurrentLinkedQueue<ArrayList<GameCard>> cardQueue = new ConcurrentLinkedQueue<>();
+
 	MultiplayerStates ms = new MultiplayerStates();
 
 	public void handleReceivedPacket(String name, BufferedReader in) {
 		try {
 			String data = in.readLine();
+
 			stringQueue.add(data);
 
 			System.out.println("The following data has been added to the queue: " + stringQueue.peek());

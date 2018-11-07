@@ -1,6 +1,7 @@
 package scenes;
 
 import javafx.scene.layout.GridPane;
+import sockets.Client;
 
 public class SceneController {
 	private static TitleScene title = new TitleScene();
@@ -9,6 +10,8 @@ public class SceneController {
 
 	private static int selectedScene = 0;
 	public static GridPane root;
+
+	static Client client = null;
 
 	// display the appropriate scene
 	public static void manageScenes() {
@@ -30,11 +33,11 @@ public class SceneController {
 
 		case 3:
 			// start host game
-			boardScene.setMainBoard(root);
+			boardScene.setMainBoard(root, false, null);
 			break;
 
 		case 4:
-			// start connect game
+			boardScene.setMainBoard(root, true, client);
 			break;
 
 		case 5:
@@ -54,6 +57,11 @@ public class SceneController {
 		root.getChildren().clear();
 		root.getChildren().removeAll();
 		manageScenes();
+
+	}
+
+	public void passClient(Client client) {
+		this.client = client;
 
 	}
 
