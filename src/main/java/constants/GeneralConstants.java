@@ -9,7 +9,7 @@ public class GeneralConstants {
 	public static final String optionsLinkName = "Options";
 	public static final String exitGameName = "Exit Game";
 	public static final String creditsOptionName = "Developer: Dalton Smith";
-	public static final String versionNumber = "1.0.0a";
+	public static final String versionNumber = "1.0.1a";
 
 	// connect scene constants
 	public static final String connectDialogName = "Connect";
@@ -18,8 +18,12 @@ public class GeneralConstants {
 	public static final String returnButtonName = "Return";
 
 	public static final String creditsText = "Developer and Project Coordinator: Dalton Smith\n"
-			+ "Graphic Designer: Jacob Egnor\n" + "Motivational Support: ur mum\n"
-			+ "Additional Motivational Support: ur sister\n" + "Extra thanks to: My depression\n" + "Love ya'll <3";
+											+ "Graphic Designer: Jacob Egnor\n"
+											+ "Motivational Support: ur mum\n"
+											+ "Dark Lord of Testers: Maelle Jennings\n"
+											+ "Additional Motivational Support: ur sister\n"
+											+ "Extra thanks to: My depression\n"
+											+ "Love ya'll <3";
 
 	// window data
 	public static final int minWindowWidth = 960;

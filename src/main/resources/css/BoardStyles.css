@@ -33,7 +33,22 @@
 }
 
 #playerRow {
-    -fx-padding: 20;
+    -fx-padding: 0;
+}
+
+#opponentRow {
+    -fx-padding: 0;
+}
+
+#turnNotifierText {
+    -fx-font-size: 30px;
+    -fx-font-family: "Times New Roman";
+    -fx-effect: dropshadow(three-pass-box, white, 10, 0, 0, 0);
+
+}
+
+#turnNotifier {
+    -fx-padding: 10px;
 }
 
 

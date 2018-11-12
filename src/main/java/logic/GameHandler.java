@@ -3,12 +3,10 @@ package logic;
 import javafx.concurrent.Task;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import scenes.BoardScene;
 import sockets.Client;
 import sockets.Server;
 
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GameHandler{
@@ -146,7 +144,7 @@ public class GameHandler{
             userConnected = true;
             generateClientScreen(playerRow, opponentRow);
             listenForServerCards();
-            listenForTurnCompletitionServer();
+            listenForTurnCompletionServer();
 
         });
 
@@ -156,7 +154,7 @@ public class GameHandler{
     }
 
     @SuppressWarnings("Duplicates")
-    public void listenForTurnCompletitionServer() {
+    public void listenForTurnCompletionServer() {
         Task<Void> task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
@@ -181,6 +179,7 @@ public class GameHandler{
 
         task.setOnSucceeded(e -> {
             userConnected = true;
+            BoardScene.setNotifierText("Your Turn!");
             BoardScene.updateTurnState(true);
 
         });
@@ -191,7 +190,7 @@ public class GameHandler{
     }
 
     @SuppressWarnings("Duplicates")
-    public void listenForTurnCompletitionClient() {
+    public void listenForTurnCompletionClient() {
         Task<Void> task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
@@ -216,6 +215,7 @@ public class GameHandler{
 
         task.setOnSucceeded(e -> {
             userConnected = true;
+            BoardScene.setNotifierText("Your Turn!");
             BoardScene.updateTurnState(true);
 
         });

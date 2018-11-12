@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import logic.GameCard;
 import logic.GameHandler;
 import logic.GameMain;
@@ -23,6 +24,7 @@ public class BoardScene {
 	GridPane playerSide = new GridPane();
 	GridPane playerDeck = new GridPane();
 	GridPane opponentDeck = new GridPane();
+	GridPane turnNotifier = new GridPane();
 
 	static Boolean isTurnMine = false;
 
@@ -44,6 +46,9 @@ public class BoardScene {
 	// sub panes of center board
 	GridPane playerRow = new GridPane();
 	GridPane opponentRow = new GridPane();
+
+	//turn notifier
+	static Text text = new Text();
 
 	GameHandler gameHandler = null;
 
@@ -92,6 +97,8 @@ public class BoardScene {
                 createCenter(board);
             }
 
+            createNotifier();
+
 			createDeck(playerDeck);
 			createPlayerSide(playerSide);
 			createOpponentSide(opponentSide);
@@ -108,6 +115,7 @@ public class BoardScene {
                 gameHandler.updateGameBoard(playerRow, opponentRow);
                 gameHandler.updateClientUI();
 
+                opponentRow.setId("opponentRow");
                 board.setBottom(playerRow);
                 playerRow.setAlignment(Pos.CENTER);
                 board.setTop(opponentRow);
@@ -142,9 +150,33 @@ public class BoardScene {
 		gameController.startGame(playerRow, opponentRow);
 
 		playerRow.setId("playerRow");
+
 		board.setBottom(playerRow);
 		board.setTop(opponentRow);
 
+	}
+
+	private void createNotifier() {
+		turnNotifier.setAlignment(Pos.CENTER);
+		turnNotifier.add(text, 0, 0);
+		text.setId("turnNotifierText");
+		turnNotifier.setId("turnNotifier");
+		turnNotifier.setMaxWidth(100);
+
+		if (isClient) {
+			text.setText("Opponent Turn!");
+
+		} else {
+			text.setText("Your Turn!");
+
+		}
+
+		board.setCenter(turnNotifier);
+
+	}
+
+	public static void setNotifierText(String inputText) {
+		text.setText(inputText);
 	}
 
 	private void createPlayerSide(GridPane playerSide) {
@@ -202,11 +234,14 @@ public class BoardScene {
                 if (!isClient) {
                     System.out.println("Sent data to client");
                     server.sendData("[TurnComplete] ");
-                    gameHandler.listenForTurnCompletitionClient();
+                    gameHandler.listenForTurnCompletionClient();
+					BoardScene.setNotifierText("Opponent Turn!");
+
                 } else {
                     System.out.println("Sent data to server");
                     client.sendSocketData("[TurnComplete] ");
-                    gameHandler.listenForTurnCompletitionServer();
+                    gameHandler.listenForTurnCompletionServer();
+					BoardScene.setNotifierText("Opponent Turn!");
                 }
 
             } else {
