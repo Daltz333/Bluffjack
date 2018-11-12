@@ -61,7 +61,7 @@ public class SceneController {
 	}
 
 	public void passClient(Client client) {
-		this.client = client;
+		SceneController.client = client;
 
 	}
 

@@ -38,7 +38,7 @@ public class GameHandler{
     public void updateUI() {
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 while(true) {
                     String data = server.peekData();
                     if (data != null) {
@@ -77,7 +77,7 @@ public class GameHandler{
     public void updateClientUI() {
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 while(true) {
                     String data = client.returnSocketData();
                     if (data != null) {
@@ -112,7 +112,7 @@ public class GameHandler{
     public void updateGameBoard(GridPane playerRow, GridPane opponentRow) {
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 boolean endStateOne = true;
                 boolean endStateTwo = true;
                 while(endStateOne || endStateTwo) {
@@ -157,7 +157,7 @@ public class GameHandler{
     public void listenForTurnCompletionServer() {
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 while(true) {
                     String data = client.peekData();
                     if (data != null) {
@@ -193,7 +193,7 @@ public class GameHandler{
     public void listenForTurnCompletionClient() {
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 while(true) {
                     String data = server.peekData();
                     if (data != null) {
@@ -235,7 +235,7 @@ public class GameHandler{
         AtomicReference<String> tempData = new AtomicReference<>();
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 while(true) {
                     String data = client.peekData();
                     if (data != null) {
@@ -275,7 +275,7 @@ public class GameHandler{
         AtomicReference<String> tempData = new AtomicReference<>();
         Task<Void> task = new Task<Void>() {
             @Override
-            public Void call() throws Exception {
+            public Void call() {
                 while(true) {
                     String data = server.peekData();
                     if (data != null) {
