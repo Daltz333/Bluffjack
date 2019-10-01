@@ -67,4 +67,8 @@ public class GameCard extends Region {
 		return cardArray;
 	}
 
+	public int getValue() {
+		return Integer.parseInt(value);
+	}
+
 }

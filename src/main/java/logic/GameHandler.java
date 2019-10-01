@@ -22,6 +22,8 @@ public class GameHandler{
     GridPane playerRow = null;
     GridPane opponentRow = null;
 
+    public static boolean isWin = false;
+
     public GameHandler(Server server, Hyperlink userName, GameMain gameController, Client client, GridPane playerRow, GridPane opponentRow) {
         this.server = server;
         this.userName = userName;
@@ -165,10 +167,17 @@ public class GameHandler{
                         String dataContent = data.substring(data.indexOf("]") + 2);
 
                         if (dataType.equals("[TurnComplete]")) {
+                            System.out.println("Turn completed!");
                             client.returnSocketData(); //remove the data instead of just peeking at it
                             break;
+                        } else if (dataType.equals("[IsWin]")) {
+                            System.out.println("Told to receive win!");
+                            client.returnSocketData();
+                            isWin = true;
+                        } else {
+                            System.out.println(data);
+                            server.returnData();
                         }
-
                     }
 
                 }
@@ -201,10 +210,19 @@ public class GameHandler{
                         String dataContent = data.substring(data.indexOf("]") + 2);
 
                         if (dataType.equals("[TurnComplete]")) {
+                            System.out.println("Turn completed");
                             server.returnData(); //remove the data instead of just peeking at it
                             break;
+                        } else if (dataType.equals("[IsWin]")) {
+                            server.returnData();
+                            System.out.println("Told to receive win!");
+                            isWin = true;
+                        } else {
+                            System.out.println(data);
+                            //if we don't know what the fuck the data is
+                            //just yeet it into the abyss
+                            server.returnData();
                         }
-
                     }
 
                 }

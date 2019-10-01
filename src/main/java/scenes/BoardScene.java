@@ -5,6 +5,8 @@ import constants.GeneralConstants;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -15,6 +17,8 @@ import logic.GameMain;
 import logic.MultiplayerStates;
 import sockets.Client;
 import sockets.Server;
+
+import java.util.Optional;
 
 public class BoardScene {
 	// framework of board screen
@@ -60,6 +64,8 @@ public class BoardScene {
 
 	Client client = null;
 	GameMain getGameController = null;
+
+	public static boolean isWin = true;
 
 	public void setMainBoard(GridPane root, boolean isClientInput, Client client) {
 
@@ -219,6 +225,7 @@ public class BoardScene {
                 if (gameHandler.getUserConnectedState()) {
                     if (isTurnMine) {
                         gameController.giveCard(playerRow);
+                        isWin = false;
                     }
                 }
             } else {
@@ -232,24 +239,92 @@ public class BoardScene {
 			if (isTurnMine) {
 			    isTurnMine = false;
                 if (!isClient) {
+                	if (isWin) {
+						if (GameHandler.isWin) {
+							System.out.println("Calculate win!");
+
+							if (doIWin()) {
+								Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Congratulations! You win!");
+								Optional<ButtonType> data = alert.showAndWait();
+								if (data.get().getButtonData().equals(ButtonBar.ButtonData.OK_DONE)) {
+									System.exit(0);
+								}
+							} else {
+								Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Congratulations! You lose!");
+								Optional<ButtonType> data = alert.showAndWait();
+								if (data.get().getButtonData().equals(ButtonBar.ButtonData.OK_DONE)) {
+									System.exit(0);
+								}
+							}
+						}
+                		server.sendData("[IsWin] ");
+                		System.out.println("Told client to calculate winning");
+					}
                     System.out.println("Sent data to client");
                     server.sendData("[TurnComplete] ");
                     gameHandler.listenForTurnCompletionClient();
 					BoardScene.setNotifierText("Opponent Turn!");
 
                 } else {
+					if (isWin) {
+						if (GameHandler.isWin) {
+							System.out.println("Calculate win!");
+
+							if (doIWin()) {
+								Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Congratulations! You win!");
+								Optional<ButtonType> data = alert.showAndWait();
+								if (data.get().getButtonData().equals(ButtonBar.ButtonData.OK_DONE)) {
+									System.exit(0);
+								}
+							} else {
+								Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Congratulations! You lose!");
+								Optional<ButtonType> data = alert.showAndWait();
+								if (data.get().getButtonData().equals(ButtonBar.ButtonData.OK_DONE)) {
+									System.exit(0);
+								}
+							}
+						}
+						client.sendSocketData("[IsWin] ");
+						System.out.println("Told server to calculate winning");
+					}
                     System.out.println("Sent data to server");
                     client.sendSocketData("[TurnComplete] ");
                     gameHandler.listenForTurnCompletionServer();
 					BoardScene.setNotifierText("Opponent Turn!");
                 }
-
             } else {
 			    //do nothing cuz turn is not urs
 
             }
 
+			System.out.println(isWin);
+			System.out.println(GameHandler.isWin);
+			isWin = true;
 		});
+	}
+
+	public boolean doIWin() {
+		int serverScore = 0;
+		int clientScore = 0;
+		for (GameCard card : gameController.getServerCards()) {
+			serverScore = serverScore + card.getValue();
+		}
+
+		for (GameCard card : gameController.getClientCards()) {
+			clientScore = clientScore + card.getValue();
+		}
+
+		if (serverScore > 21) {
+			return false;
+		} else if (clientScore > 21) {
+			return true;
+		}
+
+		if (serverScore > clientScore) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
     public static void updateOpponentUsername(String username) {
